@@ -1,0 +1,33 @@
+.site-footer {
+  margin-top: var(--s-6);
+  padding: var(--s-6) 0;
+  text-align: center;
+  border-top: 1px solid var(--c-border);
+}
+.ft-credit {
+  font-size: var(--t-xl);
+  font-weight: 700;
+  color: var(--c-text);
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-2), var(--c-accent-3));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 8s ease infinite;
+  margin-bottom: var(--s-2);
+}
+.ft-credit-en {
+  font-size: var(--t-md);
+  font-weight: 600;
+  color: var(--c-text-2);
+  letter-spacing: 0.02em;
+  margin-bottom: var(--s-3);
+  direction: ltr;
+}
+.ft-lab {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+}

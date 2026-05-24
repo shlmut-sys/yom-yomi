@@ -1,0 +1,102 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--s-4);
+}
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  animation: fade-in var(--t-fast) var(--ease-out);
+}
+.modal-panel {
+  position: relative;
+  background: var(--c-bg-1);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  animation: pop-up var(--t-med) var(--ease-spring);
+}
+.modal-close {
+  position: absolute;
+  top: var(--s-3);
+  inset-inline-end: var(--s-3);
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  color: var(--c-text-2);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+.modal-close:hover { border-color: var(--c-accent); color: var(--c-text); }
+.modal-title {
+  font-size: var(--t-xl);
+  font-weight: 800;
+  color: var(--c-accent);
+  margin: 0 var(--s-7) var(--s-2) 0;
+  line-height: 1.2;
+}
+.modal-meta {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  color: var(--c-text-3);
+  margin-bottom: var(--s-3);
+  letter-spacing: 0.05em;
+}
+.modal-body {
+  font-size: var(--t-md);
+  color: var(--c-text);
+  line-height: 1.7;
+  margin-bottom: var(--s-4);
+}
+.modal-thumb {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: var(--r-md);
+  float: inline-end;
+  margin-inline-start: var(--s-3);
+  margin-bottom: var(--s-2);
+  border: 2px solid var(--c-border-strong);
+}
+.modal-body-text {
+  font-size: var(--t-md);
+  line-height: 1.75;
+  color: var(--c-text);
+}
+.modal-loading {
+  margin-top: var(--s-3);
+  padding-top: var(--s-3);
+  border-top: 1px dashed var(--c-border);
+}
+.modal-note {
+  margin-top: var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--r-sm);
+  font-size: var(--t-sm);
+  color: var(--c-text-3);
+  font-style: italic;
+}
+.modal-link {
+  display: inline-block;
+  color: var(--c-accent);
+  font-size: var(--t-sm);
+}
+.modal-link:hover { text-decoration: underline; }

@@ -1,0 +1,250 @@
+/* יומיומי · Unique palette per card — each card has its own personality */
+
+/* Base: cards size to content (not fixed) */
+.card { height: auto; min-height: 0; }
+
+/* ═══════════════ Card-specific palettes ═══════════════ */
+
+/* 🕯️ Yahrzeit — Burgundy + warm candle */
+.card-yahrzeit {
+  background: linear-gradient(135deg, #2a0a14 0%, #4a1525 50%, #2a0a14 100%);
+  border-color: rgba(255, 138, 80, 0.35);
+}
+body[data-tone="light"] .card-yahrzeit {
+  background: linear-gradient(135deg, #fff5f0 0%, #ffe8db 50%, #fff5f0 100%);
+  border-color: rgba(180, 60, 30, 0.2);
+}
+.card-yahrzeit .card-title,
+.card-yahrzeit .yz-name { color: var(--c-text); }
+body[data-tone="dark"] .card-yahrzeit .card-title { color: #ffe0c0; }
+body[data-tone="dark"] .card-yahrzeit .yz-name { color: #fff0e0; }
+
+/* ✨ Breslov chizuk — Gold + violet */
+.card-breslov.card-chizuk-big {
+  background: linear-gradient(135deg, #2a1b4a 0%, #4a2d6a 35%, #6a3d2a 100%);
+  border-color: rgba(251, 191, 36, 0.45);
+}
+body[data-tone="light"] .card-breslov.card-chizuk-big {
+  background: linear-gradient(135deg, #fefbf0 0%, #fff8e0 50%, #fef5e0 100%);
+  border-color: rgba(180, 140, 30, 0.25);
+}
+
+/* 📜 iBreslev — Soft violet */
+.card-ibreslev {
+  background: linear-gradient(135deg, #1f1a3a 0%, #2e2553 100%);
+}
+body[data-tone="light"] .card-ibreslev {
+  background: linear-gradient(135deg, #f5f0ff 0%, #ebe3fa 100%);
+}
+
+/* ⚖️ Halacha — Forest green elegance */
+.card-halacha {
+  background: linear-gradient(135deg, #0a2418 0%, #143524 50%, #0a2418 100%);
+  border-color: rgba(95, 200, 120, 0.3);
+}
+body[data-tone="light"] .card-halacha {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #f0fdf4 100%);
+  border-color: rgba(20, 130, 60, 0.2);
+}
+
+/* 💎 Pitgam — Rose-metallic, BIG centered text */
+.card-pitgam {
+  background: linear-gradient(135deg, #2a0e25 0%, #3e1838 50%, #2a0e25 100%);
+  border-color: rgba(244, 114, 182, 0.35);
+}
+body[data-tone="light"] .card-pitgam {
+  background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 50%, #fdf2f8 100%);
+  border-color: rgba(180, 60, 120, 0.2);
+}
+.card-pitgam .quote.quote-short {
+  font-size: clamp(1.6rem, 4vw, 2.6rem) !important;
+  font-weight: 700;
+  line-height: 1.5;
+  padding: var(--s-5);
+}
+.card-pitgam .quote-src {
+  font-size: var(--t-md);
+  margin-top: var(--s-3);
+}
+
+/* ⏱️ Zmanim — Soft sky-teal */
+.card-zmanim {
+  background: linear-gradient(135deg, #0a1f30 0%, #102e42 100%);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+body[data-tone="light"] .card-zmanim {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-color: rgba(20, 90, 140, 0.2);
+}
+
+/* 📖 Learning — Sepia / old book */
+.card-learning {
+  background: linear-gradient(135deg, #2a1f10 0%, #3a2a18 100%);
+  border-color: rgba(200, 140, 70, 0.35);
+}
+body[data-tone="light"] .card-learning {
+  background: linear-gradient(135deg, #fdf6e3 0%, #f5ebcd 100%);
+  border-color: rgba(140, 90, 30, 0.25);
+}
+
+/* ⏳ Sixth Millennium — Deep blue + gold accents (already defined, enhance) */
+.card-sixth-mil {
+  background: linear-gradient(135deg, #0a1535 0%, #1a2855 50%, #0a1535 100%);
+  border-color: rgba(251, 191, 36, 0.4);
+}
+body[data-tone="light"] .card-sixth-mil {
+  background: linear-gradient(135deg, #f0f4ff 0%, #fff8e0 100%);
+  border-color: rgba(140, 100, 30, 0.25);
+}
+
+/* 🌗 Tekufot+Lunar combined — Silver-night */
+.card-tekufot-lunar {
+  background: linear-gradient(135deg, #0e0e1f 0%, #1e1e3a 100%);
+  border-color: rgba(200, 210, 240, 0.3);
+}
+body[data-tone="light"] .card-tekufot-lunar {
+  background: linear-gradient(135deg, #f5f5fa 0%, #e8e8f5 100%);
+  border-color: rgba(80, 90, 130, 0.2);
+}
+
+/* 📚 Parsha articles — sky+gold (HaMichlol) */
+.card-parsha-articles {
+  background: linear-gradient(135deg, #0f1f3a 0%, #1f2b50 100%);
+}
+body[data-tone="light"] .card-parsha-articles {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+}
+.card-parsha-articles .card-title { font-size: clamp(1.3rem, 2.8vw, 1.9rem); }
+
+/* 📺 Daf Yomi — beit-midrash red */
+.card-daf-yomi {
+  background: linear-gradient(135deg, #2a0a0e 0%, #4a1c20 100%);
+  border-color: rgba(248, 113, 113, 0.35);
+}
+body[data-tone="light"] .card-daf-yomi {
+  background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+  border-color: rgba(180, 50, 50, 0.25);
+}
+
+/* 🌍 Travel — Ocean turquoise */
+.card-travel {
+  background: linear-gradient(135deg, #052e2e 0%, #0a4747 100%);
+  border-color: rgba(20, 184, 166, 0.4);
+}
+body[data-tone="light"] .card-travel {
+  background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
+  border-color: rgba(20, 140, 130, 0.25);
+}
+
+/* 📚 Breslev Books — Library brown */
+.card-breslev-books {
+  background: linear-gradient(135deg, #221608 0%, #3a2410 100%);
+  border-color: rgba(180, 140, 90, 0.35);
+}
+body[data-tone="light"] .card-breslev-books {
+  background: linear-gradient(135deg, #fef8f0 0%, #f5e7d5 100%);
+  border-color: rgba(140, 100, 50, 0.25);
+}
+
+/* 📷 Picture of Day — Pastel pink */
+.card-potd {
+  background: linear-gradient(135deg, #2a1a2a 0%, #3a2540 100%);
+}
+body[data-tone="light"] .card-potd {
+  background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 100%);
+}
+
+/* 💡 Did you know — Yellow bulb */
+.card-dyk {
+  background: linear-gradient(135deg, #2a2210 0%, #3a3018 100%);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+body[data-tone="light"] .card-dyk {
+  background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+  border-color: rgba(180, 140, 30, 0.25);
+}
+
+/* ⭐ Featured article — Royal purple */
+.card-featured {
+  background: linear-gradient(135deg, #1f0a35 0%, #2e1050 100%);
+  border-color: rgba(168, 85, 247, 0.35);
+}
+body[data-tone="light"] .card-featured {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border-color: rgba(120, 60, 200, 0.25);
+}
+
+/* 🗓️ Hebrew Calendar — same as yahrzeit (merged) */
+.card-hebcal {
+  background: linear-gradient(135deg, #2a0a14 0%, #4a1525 100%);
+  border-color: rgba(255, 138, 80, 0.35);
+}
+body[data-tone="light"] .card-hebcal {
+  background: linear-gradient(135deg, #fff5f0 0%, #ffe8db 100%);
+}
+
+/* ✨ New Articles — fresh spring green (small, content-fit) */
+.card-new-articles {
+  background: linear-gradient(135deg, #0a2a18 0%, #143524 100%);
+  border-color: rgba(132, 204, 22, 0.35);
+}
+body[data-tone="light"] .card-new-articles {
+  background: linear-gradient(135deg, #f7fee7 0%, #ecfccb 100%);
+  border-color: rgba(80, 130, 30, 0.25);
+}
+.card-new-articles .card-body {
+  max-height: 280px; /* smaller — fits content */
+}
+
+/* 📰 News — Newsprint gray */
+.card-news {
+  background: linear-gradient(135deg, #1a1a22 0%, #2a2a35 100%);
+}
+body[data-tone="light"] .card-news {
+  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+}
+
+/* 🌿 Health — Fresh leaf green */
+.card-health {
+  background: linear-gradient(135deg, #052418 0%, #0a3522 100%);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+body[data-tone="light"] .card-health {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-color: rgba(30, 130, 60, 0.25);
+}
+
+/* 👨‍👩‍👧 Family — Warm orange */
+.card-family {
+  background: linear-gradient(135deg, #2a1505 0%, #3a2110 100%);
+  border-color: rgba(251, 146, 60, 0.35);
+}
+body[data-tone="light"] .card-family {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+  border-color: rgba(180, 90, 30, 0.25);
+}
+
+/* 🏺 History/Archaeology — Clay/terracotta */
+.card-history-art {
+  background: linear-gradient(135deg, #2a1810 0%, #3e261a 100%);
+  border-color: rgba(217, 119, 87, 0.35);
+}
+body[data-tone="light"] .card-history-art {
+  background: linear-gradient(135deg, #fef3ed 0%, #fde6d8 100%);
+  border-color: rgba(160, 90, 40, 0.25);
+}
+
+/* 🎵 Music News — Crimson/burgundy */
+.card-music {
+  background: linear-gradient(135deg, #2a0a1f 0%, #4a1230 100%);
+  border-color: rgba(244, 63, 94, 0.4);
+}
+body[data-tone="light"] .card-music {
+  background: linear-gradient(135deg, #fef2f5 0%, #ffe4e6 100%);
+  border-color: rgba(180, 30, 70, 0.25);
+}
+
+/* ═══════════════ Card body — content-fit ═══════════════ */
+.card-yahrzeit .yahrzeit-list { max-height: none; } /* let content determine */
+.card-pitgam .card-body { padding: var(--s-5); }
+.card-pitgam { min-height: 200px; }

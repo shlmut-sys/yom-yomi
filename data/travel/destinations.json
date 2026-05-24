@@ -1,0 +1,26 @@
+{
+  "title": "מקומות בעולם לטייל בהם — יעדים יהודיים והיסטוריים",
+  "lastUpdated": "2026-05-24",
+  "destinations": [
+    { "emoji": "🕯️", "he": { "name": "מירון", "country": "ישראל", "desc": "קבר רבי שמעון בר יוחאי, אתר עליה לרגל מרכזי. אלפי אנשים פוקדים את הציון בל\"ג בעומר." }, "en": { "name": "Meron", "country": "Israel", "desc": "Tomb of Rabbi Shimon bar Yochai, central pilgrimage site." } },
+    { "emoji": "⛪", "he": { "name": "אומן", "country": "אוקראינה", "desc": "קבר רבי נחמן מברסלב — עשרות אלפי חסידים עולים לכאן בראש השנה." }, "en": { "name": "Uman", "country": "Ukraine", "desc": "Tomb of Rabbi Nachman of Breslov." } },
+    { "emoji": "🕍", "he": { "name": "הכותל המערבי", "country": "ירושלים", "desc": "שריד בית המקדש, מקום הקדוש ליהדות. אלפי אנשים מתפללים שם יום-יום." }, "en": { "name": "Western Wall", "country": "Jerusalem", "desc": "Remnant of the Temple, holiest site in Judaism." } },
+    { "emoji": "🌹", "he": { "name": "קבר רחל", "country": "בית לחם", "desc": "קבר רחל אמנו - 'ובאו בנים לגבולם'. מקום תפילה לנשים." }, "en": { "name": "Rachel's Tomb", "country": "Bethlehem", "desc": "Tomb of our Matriarch Rachel." } },
+    { "emoji": "🏛️", "he": { "name": "מערת המכפלה", "country": "חברון", "desc": "קבר האבות והאמהות - אברהם, יצחק, יעקב, שרה, רבקה ולאה." }, "en": { "name": "Cave of the Patriarchs", "country": "Hebron", "desc": "Burial of the Patriarchs and Matriarchs." } },
+    { "emoji": "🌌", "he": { "name": "צפת", "country": "ישראל", "desc": "עיר המקובלים - האר\"י הקדוש, רבי יוסף קארו, רבי שלמה אלקבץ ובית הכנסת אבוהב." }, "en": { "name": "Tzfat", "country": "Israel", "desc": "City of Kabbalists - the Arizal, R' Yosef Karo." } },
+    { "emoji": "💎", "he": { "name": "טבריה", "country": "ישראל", "desc": "קבר הרמב\"ם, רבי עקיבא, רבי מאיר בעל הנס. אגם הכינרת והחמי טבריה." }, "en": { "name": "Tiberias", "country": "Israel", "desc": "Tombs of Rambam, Rabbi Akiva, Sea of Galilee." } },
+    { "emoji": "🏰", "he": { "name": "פראג", "country": "צ'כיה", "desc": "קבר המהר\"ל, בית הכנסת העתיק 'אלטנוישול', הרובע היהודי ההיסטורי." }, "en": { "name": "Prague", "country": "Czech Republic", "desc": "Tomb of the Maharal, the ancient Altneuschul synagogue." } },
+    { "emoji": "🕯️", "he": { "name": "ברדיטשוב", "country": "אוקראינה", "desc": "קברו של רבי לוי יצחק מברדיטשוב — 'הסניגור של עם ישראל'." }, "en": { "name": "Berdichev", "country": "Ukraine", "desc": "Burial of Rabbi Levi Yitzchak of Berdichev." } },
+    { "emoji": "🏛️", "he": { "name": "ירושלים העתיקה", "country": "ישראל", "desc": "בתי הכנסת בעיר העתיקה — חורבת רבי יהודה החסיד, הרובע היהודי, כיכר החורבה." }, "en": { "name": "Old City of Jerusalem", "country": "Israel", "desc": "Ancient synagogues, the Jewish Quarter." } },
+    { "emoji": "🕯️", "he": { "name": "וזאן (גרניצה)", "country": "מרוקו", "desc": "קבר רבי עמרם בן דיואן - מרכז עליה לרגל של יהדות מרוקו." }, "en": { "name": "Wazzan (Granitsa)", "country": "Morocco", "desc": "Pilgrimage to Rabbi Amram ben Diwan." } },
+    { "emoji": "🗽", "he": { "name": "ניו יורק - 770", "country": "ארה\"ב", "desc": "770 איסטרן פארקווי - הבית של הרבי מליובאוויטש, מרכז חב\"ד העולמי." }, "en": { "name": "New York - 770", "country": "USA", "desc": "770 Eastern Parkway - the Rebbe's home." } },
+    { "emoji": "📚", "he": { "name": "ווילנא", "country": "ליטא", "desc": "קבר הגאון מווילנא, ירושלים דליטא, מרכז התורה והמוסר." }, "en": { "name": "Vilna", "country": "Lithuania", "desc": "Tomb of the Vilna Gaon, Jerusalem of Lithuania." } },
+    { "emoji": "🏔️", "he": { "name": "מורה הר סיני", "country": "מצרים", "desc": "ההר שעליו ניתנה התורה. מטיילים עולים אליו לפנות בוקר." }, "en": { "name": "Mount Sinai", "country": "Egypt", "desc": "Where the Torah was given - climbed before dawn." } },
+    { "emoji": "🌊", "he": { "name": "ים סוף - איים בים האדום", "country": "מצרים", "desc": "מקום קריעת ים סוף. הרים יפים, מים תכולים, חוויה מרגשת." }, "en": { "name": "Red Sea Islands", "country": "Egypt", "desc": "Where the Sea split. Beautiful landscapes." } },
+    { "emoji": "⛪", "he": { "name": "מיכלינשטין (זאלצבורג)", "country": "אוסטריה", "desc": "אזור היסטורי של יהדות גרמניה - מציבות עתיקות, בתי כנסת היסטוריים." }, "en": { "name": "Salzburg area", "country": "Austria", "desc": "Historic European Jewish heritage." } },
+    { "emoji": "🌍", "he": { "name": "אתיופיה - גונדר", "country": "אתיופיה", "desc": "מולדת יהודי אתיופיה - 'ביתא ישראל'. מקום היסטורי של עליית עם." }, "en": { "name": "Gondar", "country": "Ethiopia", "desc": "Home of Ethiopian Jewry - Beta Israel." } },
+    { "emoji": "🏝️", "he": { "name": "ג'רבא", "country": "תוניסיה", "desc": "האי ג'רבא - בית הכנסת אל-גריבה, אחד מהעתיקים בעולם." }, "en": { "name": "Djerba", "country": "Tunisia", "desc": "El Ghriba Synagogue - among the oldest in the world." } },
+    { "emoji": "🇮🇳", "he": { "name": "קוצ'ין", "country": "הודו", "desc": "יהדות קוצ'ין העתיקה - בית הכנסת פרדישי, מאחת הקהילות הקדומות באסיה." }, "en": { "name": "Cochin", "country": "India", "desc": "Ancient Cochin Jewish community - Paradesi Synagogue." } },
+    { "emoji": "🐪", "he": { "name": "פאס", "country": "מרוקו", "desc": "המלאח של פאס - הרובע היהודי ההיסטורי, ספרים עתיקים, מורשת ספרדית." }, "en": { "name": "Fez", "country": "Morocco", "desc": "The Mellah - historic Jewish quarter." } }
+  ]
+}

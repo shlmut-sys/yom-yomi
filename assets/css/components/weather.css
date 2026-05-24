@@ -1,0 +1,26 @@
+.hero-weather {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-2) var(--s-3);
+  background: var(--c-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  font-size: var(--t-sm);
+  animation: fade-in var(--t-slow) var(--ease-out);
+}
+.weather-icon {
+  font-size: var(--t-lg);
+  filter: drop-shadow(0 0 8px var(--c-accent-glow));
+}
+.weather-temp {
+  font-family: var(--f-mono);
+  font-weight: 700;
+  color: var(--c-accent-2);
+  font-size: var(--t-md);
+}
+.weather-desc {
+  font-size: var(--t-xs);
+  color: var(--c-text-3);
+}

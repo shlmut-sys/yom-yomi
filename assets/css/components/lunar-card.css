@@ -1,0 +1,24 @@
+.lunar-block { text-align: center; padding: var(--s-3); }
+.lunar-type {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  color: var(--c-accent);
+  margin-bottom: var(--s-1);
+}
+.lunar-date {
+  font-family: var(--f-mono);
+  font-size: var(--t-md);
+  color: var(--c-text);
+  direction: ltr;
+  margin-bottom: var(--s-2);
+}
+.lunar-mag {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-accent-2);
+}
+.lunar-vis {
+  margin-top: var(--s-2);
+  font-size: var(--t-xs);
+  color: var(--c-text-3);
+}

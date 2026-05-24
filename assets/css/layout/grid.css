@@ -1,0 +1,29 @@
+/* =============================================================
+   Grid — 3-column rows, collapses to 1 column on mobile
+   ============================================================= */
+.grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+.grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid > * {
+  min-width: 0;
+}
+
+/* Wide cards span full width */
+.card-wide { width: 100%; }
+
+@media (max-width: 1000px) {
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 > :first-child { grid-column: span 2; }
+}
+@media (max-width: 680px) {
+  .grid-3,
+  .grid-2 { grid-template-columns: 1fr; }
+  .grid-3 > :first-child { grid-column: auto; }
+}

@@ -1,0 +1,60 @@
+/* יומיומי · Styles for fallback content (POTD, DYK, music tags) */
+
+.potd-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--s-3);
+}
+.potd-fallback img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  margin-bottom: var(--s-3);
+  background: rgba(255, 255, 255, 0.05);
+}
+.potd-caption {
+  font-size: var(--t-md);
+  color: var(--c-text);
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.dyk-fallback {
+  padding: var(--s-3);
+}
+.dyk-item {
+  font-size: var(--t-md);
+  line-height: 1.7;
+  color: var(--c-text);
+  padding: var(--s-3);
+  background: rgba(255, 255, 255, 0.05);
+  border-inline-start: 4px solid var(--c-accent-2);
+  border-radius: var(--r-md);
+}
+body[data-tone="light"] .dyk-item {
+  background: rgba(0, 0, 0, 0.04);
+}
+.dyk-item a {
+  color: var(--c-accent) !important;
+  font-weight: 600;
+}
+
+/* Music source tag */
+.hb-source-tag {
+  display: inline-block;
+  margin-top: var(--s-1);
+  padding: 0.15rem 0.5rem;
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  color: var(--c-accent-2);
+  background: color-mix(in srgb, var(--c-accent-2) 12%, transparent);
+  border-radius: var(--r-pill);
+  letter-spacing: 0.05em;
+}
+
+.music-grid {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+}

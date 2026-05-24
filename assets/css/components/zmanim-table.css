@@ -1,0 +1,75 @@
+/* Zmanim shown as labeled grid sections (no toggle) */
+.zg-section {
+  margin-top: var(--s-4);
+}
+.zg-section:first-child { margin-top: 0; }
+.zg-section-title {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: var(--s-3);
+  padding-bottom: var(--s-2);
+  border-bottom: 1px solid var(--c-border);
+}
+.zg-cells {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--s-3);
+}
+.zg-cell {
+  padding: var(--s-4) var(--s-3);
+  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  text-align: center;
+  transition: all var(--t-fast) var(--ease-out);
+}
+body[data-tone="light"] .zg-cell {
+  background: rgba(255, 255, 255, 0.75);
+}
+.zg-cell:hover {
+  border-color: var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 14%, transparent);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px var(--c-accent-glow);
+}
+.zg-name {
+  font-size: 0.95rem;
+  color: var(--c-text-2);
+  margin-bottom: var(--s-2);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+.zg-time {
+  font-family: var(--f-mono);
+  font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+  font-weight: 800;
+  color: var(--c-accent);
+  direction: ltr;
+  text-shadow: 0 0 18px var(--c-accent-glow);
+  letter-spacing: 0.02em;
+}
+.zg-section-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--s-3);
+  padding-bottom: var(--s-2);
+  color: var(--c-accent);
+}
+.zg-section-special .zg-section-title { color: var(--c-accent-2); }
+.zg-special {
+  background: color-mix(in srgb, var(--c-accent-2) 12%, transparent);
+  border-color: color-mix(in srgb, var(--c-accent-2) 40%, transparent);
+}
+.zg-special .zg-time { color: var(--c-accent-2); font-size: var(--t-xl); }
+
+@media (max-width: 680px) {
+  .zg-cells { grid-template-columns: repeat(2, 1fr); }
+  .zg-time { font-size: var(--t-lg); }
+}

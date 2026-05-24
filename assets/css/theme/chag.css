@@ -1,0 +1,23 @@
+/* Chag (Yom Tov) state */
+body[data-chag="1"] .aurora { opacity: 0.7; }
+body[data-chag="1"] .aurora-layer { animation-duration: 14s !important; }
+body[data-chag="1"] .brand-tag::after {
+  content: ' · חג שמח';
+  color: var(--c-chag);
+  font-weight: 600;
+}
+
+/* Rosh Chodesh: extra sparkle */
+body[data-rosh-chodesh="1"] .aurora { opacity: 0.65; }
+
+/* Av mourning */
+body[data-month="av"][data-day-of-month-lt="15"] .aurora {
+  opacity: 0.2;
+  filter: blur(120px) grayscale(0.7);
+}
+body[data-month="av"][data-day-of-month-lt="15"] .aurora-layer {
+  animation: none !important;
+}
+
+/* Counting omer subtle sparkle */
+body[data-omer="1"] .aurora { opacity: 0.6; }

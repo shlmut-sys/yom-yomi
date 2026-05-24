@@ -1,0 +1,63 @@
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-3);
+}
+.travel-cell {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+.travel-cell:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px var(--c-accent-glow);
+}
+.travel-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-3));
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transition: opacity var(--t-med);
+}
+.travel-thumb.has-image .travel-emoji-fallback { display: none; }
+.travel-emoji-fallback {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  opacity: 0.85;
+}
+.travel-cell .travel-info {
+  padding: var(--s-3);
+}
+.travel-cell .travel-name {
+  font-size: var(--t-md);
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 2px;
+  line-height: 1.2;
+}
+.travel-cell .travel-country {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--s-2);
+}
+.travel-cell .travel-desc {
+  font-size: var(--t-sm);
+  line-height: 1.45;
+  color: var(--c-text-2);
+}
+@media (max-width: 680px) {
+  .travel-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1a0b2e">
+  <meta name="format-detection" content="telephone=no">
+
+  <!-- Force-clear stale SW from previous versions -->
+  <script>
+    (function(){
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(regs){
+          var hadOld = false;
+          regs.forEach(function(r){ hadOld = true; r.unregister(); });
+          if (hadOld && window.caches) {
+            caches.keys().then(function(keys){
+              keys.forEach(function(k){ caches.delete(k); });
+              if (!sessionStorage.getItem('yomyomi.cleaned')) {
+                sessionStorage.setItem('yomyomi.cleaned','1');
+                location.reload(true);
+              }
+            });
+          }
+        }).catch(function(){});
+      }
+    })();
+  </script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <title>יומיומי · Yom-Yomi</title>
+  <meta name="description" content="יומיומי — היום היהודי שלך, יום אחר יום.">
+  <meta name="author" content="איתמר טיפליצקי · מעבדות שלימות">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="יומיומי · Yom-Yomi">
+  <meta property="og:description" content="היום היהודי שלך, יום אחר יום.">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:site_name" content="יומיומי">
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ipapi.co" crossorigin>
+  <link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
+  <link rel="preconnect" href="https://he.wikipedia.org" crossorigin>
+  <link rel="preconnect" href="https://www.hamichlol.org.il" crossorigin>
+  <link rel="preconnect" href="https://www.hidabroot.org" crossorigin>
+  <link rel="preconnect" href="https://api.allorigins.win" crossorigin>
+
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-day="0" data-lang="he" data-tone="light">
+
+  <div class="aurora" aria-hidden="true">
+    <div class="aurora-layer aurora-1"></div>
+    <div class="aurora-layer aurora-2"></div>
+    <div class="aurora-layer aurora-3"></div>
+  </div>
+  <div class="stars" aria-hidden="true"></div>
+
+  <div class="page">
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header class="site-header">
+      <button class="hdr-btn-big" id="langToggle" type="button" title="Change language">
+        <span class="lang-current">EN</span>
+      </button>
+      <button class="hdr-btn-big" id="toneToggle" type="button" title="רקע בהיר/כהה">
+        <span id="toneIcon">🌙</span>
+      </button>
+      <button class="hdr-btn-big hdr-location" id="locationBtn" type="button" title="Choose City">
+        <span class="loc-icon">📍</span>
+        <span class="loc-name" id="locName">—</span>
+      </button>
+    </header>
+
+    <!-- ═══════════════ MEGA BRAND ═══════════════ -->
+    <section class="mega-brand" aria-label="יומיומי">
+      <h1 class="mega-name">
+        <span class="ml" data-i="0">י</span><span class="ml" data-i="1">ו</span><span class="ml" data-i="2">מ</span><span class="ml" data-i="3">י</span><span class="ml" data-i="4">ו</span><span class="ml" data-i="5">מ</span><span class="ml" data-i="6">י</span>
+      </h1>
+      <p class="mega-tag" data-i18n="tag">היום היהודי שלך</p>
+    </section>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero hero-big" id="hero" aria-label="Today">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="hero-main">
+        <div class="hero-parsha" id="heroParsha">
+          <span class="shimmer">טוען...</span>
+        </div>
+        <div class="hero-date" id="heroDate">—</div>
+      </div>
+
+      <div class="hero-side">
+        <div class="hero-time-wrap">
+          <span class="hero-time" id="heroTime">--:--</span>
+          <span class="hero-time-city" id="heroTimeCity">—</span>
+        </div>
+        <div class="hero-weather" id="heroWeather">
+          <span class="weather-icon" id="weatherIcon">☁</span>
+          <span class="weather-temp" id="weatherTemp">--°</span>
+          <span class="weather-desc" id="weatherDesc">—</span>
+        </div>
+        <button class="hero-detect-btn-big" id="heroDetectBtn" type="button">
+          <span class="hdb-icon">📡</span>
+          <span class="hdb-text">זיהוי מיקום מדויק</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════ HOLIDAY BANNER ═══════════════ -->
+    <div class="holiday-banner" id="holidayBanner" hidden>
+      <span class="hb-icon">✦</span>
+      <span class="hb-label" id="hbLabel">—</span>
+      <span class="hb-name" id="hbName">—</span>
+      <span class="hb-countdown" id="hbCountdown">—</span>
+    </div>
+
+    <!-- ═══════════════ ZMANIM (full grid, all shitot) ═══════════════ -->
+    <article class="card card-zmanim card-wide" id="cardZmanim" data-module="zmanim">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">⏱️</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="zmanimTitle">זמני היום</h2>
+          <p class="card-sub" id="zmanimSub">לוח עתים לבינה</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="zmanim-grid" id="zmanimGrid"></div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ DAILY LEARNING ═══════════════ -->
+    <article class="card card-learning card-wide" id="cardLearning" data-module="learning">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">📖</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="learningTitle">לימוד יומי</h2>
+          <p class="card-sub" data-i18n="learningSub">דף יומי · משנה · ירושלמי · רמב"ם · חפץ חיים · נ"ך</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="learning-grid" id="learningGrid"></div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ 6th Millennium — "בעיתה אחישנה" ═══════════════ -->
+    <article class="card card-sixth-mil card-wide" id="cardSixthMil" data-module="sixth-millennium">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">⏳</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="sixthMilTitle">בעיתה אחישנה</h2>
+          <p class="card-sub" data-i18n="sixthMilSub">ספירה לאחור לראש השנה ה'ת"ש · האלף השישי</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="sm-timer">
+          <div class="sm-unit"><span class="sm-num" id="smY">—</span><span class="sm-lbl" data-i18n="smYears">שנים</span></div>
+          <div class="sm-unit"><span class="sm-num" id="smM">—</span><span class="sm-lbl" data-i18n="smMonths">חודשים</span></div>
+          <div class="sm-unit"><span class="sm-num" id="smD">—</span><span class="sm-lbl" data-i18n="smDays">ימים</span></div>
+          <div class="sm-unit"><span class="sm-num" id="smH">—</span><span class="sm-lbl" data-i18n="smHours">שעות</span></div>
+          <div class="sm-unit"><span class="sm-num" id="smMin">—</span><span class="sm-lbl" data-i18n="smMins">דקות</span></div>
+          <div class="sm-unit"><span class="sm-num" id="smS">—</span><span class="sm-lbl" data-i18n="smSecs">שניות</span></div>
+        </div>
+        <div class="sm-target" id="smTarget">—</div>
+        <div class="sm-note" data-i18n="smNote">"וביום ההוא יהיה ה' אחד ושמו אחד"</div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ Extended Weather ═══════════════ -->
+    <article class="card card-weather-ext card-wide" id="cardWeatherExt">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">🌤</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="weatherExtTitle">מזג האוויר היום</h2>
+          <p class="card-sub" data-i18n="weatherExtSub">תחזית מורחבת</p>
+        </div>
+      </header>
+      <div class="card-body" id="weatherExtBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ TEKUFOT + LUNAR (merged) ═══════════════ -->
+    <article class="card card-tekufot-lunar card-wide" id="cardTekLun">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">🌗</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="tekLunTitle">תקופות וליקויים</h2>
+          <p class="card-sub" data-i18n="tekLunSub">תקופה הקרובה · ליקוי הקרוב</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="tl-split">
+          <div class="tl-left" data-module="tekufot">
+            <div class="tl-section-title" data-i18n="tekufotShort">תקופה קרובה</div>
+            <div id="tekufotBody"></div>
+          </div>
+          <div class="tl-right" data-module="lunar">
+            <div class="tl-section-title" data-i18n="lunarShort">ליקוי קרוב</div>
+            <div id="lunarBody"></div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ Yahrzeit + Hebrew Calendar (merged) ═══════════════ -->
+    <article class="card card-yahrzeit card-hebcal card-wide" id="cardYahrzeit" data-module="yahrzeit">
+      <header class="card-head">
+        <div class="card-icon-wrap candle-wrap" aria-hidden="true">
+          <svg class="candle-svg" viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
+            <rect class="candle-body" x="15" y="28" width="10" height="28" rx="1" fill="url(#candleGrad)"/>
+            <line x1="20" y1="28" x2="20" y2="22" stroke="#3a2a18" stroke-width="1.2"/>
+            <g class="flame-group">
+              <ellipse class="flame-outer" cx="20" cy="14" rx="6" ry="11" fill="url(#flameOuter)"/>
+              <ellipse class="flame-mid" cx="20" cy="15" rx="3.8" ry="8" fill="url(#flameMid)"/>
+              <ellipse class="flame-core" cx="20" cy="17" rx="1.8" ry="4" fill="#ffeaa0"/>
+            </g>
+            <defs>
+              <linearGradient id="candleGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#f4e9c8"/><stop offset="50%" stop-color="#fbf6e2"/><stop offset="100%" stop-color="#d8c89a"/>
+              </linearGradient>
+              <radialGradient id="flameOuter" cx="0.5" cy="0.7">
+                <stop offset="0%" stop-color="#ff8c2a" stop-opacity="0.95"/>
+                <stop offset="60%" stop-color="#ff5722" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#ff5722" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="flameMid" cx="0.5" cy="0.7">
+                <stop offset="0%" stop-color="#ffd060"/><stop offset="100%" stop-color="#ff8c2a"/>
+              </radialGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="yahrzeitMergedTitle">היום בלוח השנה · יומא דהילולא</h2>
+          <p class="card-sub" id="yahrzeitSub">—</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <!-- Top: today in calendar (from HaMichlol) — BIG, white text -->
+        <div class="hebcal-merged" id="hebCalBody" data-module="hebrew-calendar">
+          <div class="shimmer">טוען...</div>
+        </div>
+        <!-- Bottom: list of tzaddikim (local data) -->
+        <div class="yahrzeit-section">
+          <h3 class="yahrzeit-section-title" data-i18n="yahrzeitToday">צדיקים שנפטרו היום:</h3>
+          <ul class="yahrzeit-list" id="yahrzeitList"></ul>
+          <button class="card-expand" id="yahrzeitExpand" hidden>
+            <span class="exp-label" data-i18n="showMore">הצג עוד</span>
+            <span class="exp-count" id="yahrzeitCount"></span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ CHIZUK YOMI — BIG, full width, vertical scroll ═══════════════ -->
+    <article class="card card-breslov card-chizuk-big card-wide" id="cardBreslov" data-module="breslov">
+      <div class="breslov-sparkles" aria-hidden="true">
+        <span class="sparkle s1">✦</span>
+        <span class="sparkle s2">✧</span>
+        <span class="sparkle s3">✦</span>
+        <span class="sparkle s4">✧</span>
+        <span class="sparkle s5">✦</span>
+      </div>
+      <header class="card-head">
+        <div class="card-icon-wrap breslov-icon-wrap">
+          <svg class="breslov-star" viewBox="0 0 40 40" aria-hidden="true">
+            <defs>
+              <radialGradient id="brStarG" cx="0.5" cy="0.5">
+                <stop offset="0%" stop-color="#fff8e0"/>
+                <stop offset="60%" stop-color="#fbbf24"/>
+                <stop offset="100%" stop-color="#f59e0b"/>
+              </radialGradient>
+            </defs>
+            <path d="M20 4 L24 16 L36 20 L24 24 L20 36 L16 24 L4 20 L16 16 Z" fill="url(#brStarG)"/>
+          </svg>
+        </div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="breslovTitle">חיזוק יומי · רבי נחמן מברסלב</h2>
+          <p class="card-sub" data-i18n="breslovSub">הציטוט גולל אוטומטית — סמן עליו עם העכבר כדי לעצור</p>
+        </div>
+      </header>
+      <div class="card-body chizuk-scroll-wrap">
+        <div class="chizuk-scroll" id="chizukScroll">
+          <h3 class="breslov-title" id="breslovTitleHe">—</h3>
+          <blockquote class="quote breslov-quote" id="breslovQuote">
+            <span class="shimmer">טוען חיזוק...</span>
+          </blockquote>
+          <cite class="quote-src breslov-src" id="breslovSrc">—</cite>
+          <div class="breslov-foot">
+            <span class="breslov-tagline" data-i18n="breslovTag">"מצוה גדולה להיות בשמחה תמיד"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ iBreslev — Daily Breslev (under chizuk) ═══════════════ -->
+    <article class="card card-ibreslev card-wide" id="cardIBreslev" data-module="ibreslev">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">📜</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="ibreslevTitle">מתורת ברסלב</h2>
+          <p class="card-sub" data-i18n="ibreslevSub">תוכן יומי מאתר iBreslev</p>
+        </div>
+      </header>
+      <div class="card-body" id="ibreslevBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ HALACHA — expanded (3 items) ═══════════════ -->
+    <article class="card card-halacha card-wide" id="cardHalacha" data-module="halacha">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">⚖️</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="halachaTitle">הלכה יומית</h2>
+          <p class="card-sub" data-i18n="halachaSub">שלוש הלכות לכל יום</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <ul class="halacha-list" id="halachaList"></ul>
+      </div>
+    </article>
+
+    <!-- ═══════════════ PITGAM ═══════════════ -->
+    <article class="card card-pitgam card-wide" id="cardPitgam" data-module="pitgam">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">💎</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="pitgamTitle">פתגם היום</h2>
+          <p class="card-sub" data-i18n="pitgamSub">מפי חכמי הספרדים</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <blockquote class="quote quote-short" id="pitgamQuote">
+          <span class="shimmer">טוען פתגם...</span>
+        </blockquote>
+        <cite class="quote-src" id="pitgamSrc">—</cite>
+      </div>
+    </article>
+
+    <!-- ═══════════════ Parsha articles (HaMichlol) ═══════════════ -->
+    <article class="card card-hamichlol card-parsha-articles card-wide" id="cardParshaArt" data-module="parsha-articles">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">📜</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="parshaArtTitle">ערכים בפרשת השבוע</h2>
+          <p class="card-sub" data-i18n="hmSource">מתוך אתר המכלול</p>
+        </div>
+      </header>
+      <div class="card-body" id="parshaArtBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ Daf Yomi (Hidabroot) ═══════════════ -->
+    <article class="card card-hidabroot card-daf-yomi card-wide" id="cardDafYomi" data-module="daf-yomi-video">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">📺</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="dafYomiTitle">הדף היומי</h2>
+          <p class="card-sub" data-i18n="hbSource">מאתר הידברות · הרב אלי סטפנסקי</p>
+        </div>
+      </header>
+      <div class="card-body" id="dafYomiBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ Travel CAROUSEL (sliding right-to-left) ═══════════════ -->
+    <article class="card card-travel card-wide" id="cardTravel" data-module="travel">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">🌍</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="travelTitle">מקומות לטייל בעולם</h2>
+          <p class="card-sub" data-i18n="travelSub">קרוסלה זזה — סמן עם העכבר לעצור</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="travel-marquee" id="travelMarquee">
+          <div class="travel-track" id="travelTrack"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ BreslevBooks store CAROUSEL ═══════════════ -->
+    <article class="card card-breslev-books card-wide" id="cardBreslevBooks" data-module="breslev-books">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">📚</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="breslevBooksTitle">ספריית ברסלב</h2>
+          <p class="card-sub" data-i18n="breslevBooksSub">קטגוריות מובחרות · breslevbooks.co.il</p>
+        </div>
+      </header>
+      <div class="card-body">
+        <div class="books-marquee" id="booksMarquee">
+          <div class="books-track" id="booksTrack"></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ═══════════════ HAMICHLOL row 1: Picture + Did You Know ═══════════════ -->
+    <div class="grid grid-2" id="rowHM1">
+      <article class="card card-hamichlol card-potd" id="cardPotd" data-module="picture-of-day">
+        <header class="card-head">
+          <div class="card-icon-wrap"><span class="card-icon">📷</span></div>
+          <div class="card-titles">
+            <h2 class="card-title" data-i18n="potdTitle">תמונת היום</h2>
+            <p class="card-sub" data-i18n="hmSource">מתוך אתר המכלול</p>
+          </div>
+        </header>
+        <div class="card-body" id="potdBody"><div class="shimmer">טוען...</div></div>
+      </article>
+
+      <article class="card card-hamichlol card-dyk" id="cardDyk" data-module="did-you-know">
+        <header class="card-head">
+          <div class="card-icon-wrap"><span class="card-icon">💡</span></div>
+          <div class="card-titles">
+            <h2 class="card-title" data-i18n="dykTitle">הידעת?</h2>
+            <p class="card-sub" data-i18n="hmSource">מתוך אתר המכלול</p>
+          </div>
+        </header>
+        <div class="card-body" id="dykBody"><div class="shimmer">טוען...</div></div>
+      </article>
+    </div>
+
+    <!-- ═══════════════ HAMICHLOL row 2: Featured article only (NEWS removed per user) ═══════════════ -->
+    <article class="card card-hamichlol card-featured card-wide" id="cardFeatured" data-module="featured-article">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">⭐</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="featuredTitle">ערך מומלץ</h2>
+          <p class="card-sub" data-i18n="hmSource">מתוך אתר המכלול</p>
+        </div>
+      </header>
+      <div class="card-body" id="faBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ HAMICHLOL row 3: New Articles only (HebCal merged above) ═══════════════ -->
+    <article class="card card-hamichlol card-new-articles" id="cardNewArt" data-module="new-articles">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">✨</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="newArtTitle">ערכים חדשים מבית המכלול</h2>
+          <p class="card-sub" data-i18n="hmSource">מתוך אתר המכלול</p>
+        </div>
+      </header>
+      <div class="card-body" id="newArtBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ HIDABROOT row: Health + Family ═══════════════ -->
+    <div class="grid grid-2" id="rowHB1">
+      <article class="card card-hidabroot card-health" id="cardHealth" data-module="health-articles">
+        <header class="card-head">
+          <div class="card-icon-wrap"><span class="card-icon">🌿</span></div>
+          <div class="card-titles">
+            <h2 class="card-title" data-i18n="healthTitle">בריאות</h2>
+            <p class="card-sub" data-i18n="hbSource">מאתר הידברות</p>
+          </div>
+        </header>
+        <div class="card-body" id="healthBody"><div class="shimmer">טוען...</div></div>
+      </article>
+
+      <article class="card card-hidabroot card-family" id="cardFamily" data-module="family-articles">
+        <header class="card-head">
+          <div class="card-icon-wrap"><span class="card-icon">👨‍👩‍👧</span></div>
+          <div class="card-titles">
+            <h2 class="card-title" data-i18n="familyTitle">משפחה</h2>
+            <p class="card-sub" data-i18n="hbSource">מאתר הידברות</p>
+          </div>
+        </header>
+        <div class="card-body" id="familyBody"><div class="shimmer">טוען...</div></div>
+      </article>
+    </div>
+
+    <!-- ═══════════════ HIDABROOT — History/Archaeology (full width) ═══════════════ -->
+    <article class="card card-hidabroot card-history-art card-wide" id="cardHistoryArt" data-module="history-articles">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">🏺</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="historyArtTitle">היסטוריה וארכיאולוגיה</h2>
+          <p class="card-sub" data-i18n="hbSource">מאתר הידברות · הרב זמיר כהן</p>
+        </div>
+      </header>
+      <div class="card-body" id="historyArtBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ Music News from Hamenagen (bottom of site) ═══════════════ -->
+    <article class="card card-music card-wide" id="cardMusic" data-module="music-news">
+      <header class="card-head">
+        <div class="card-icon-wrap"><span class="card-icon">🎵</span></div>
+        <div class="card-titles">
+          <h2 class="card-title" data-i18n="musicTitle">חדשות מוזיקה</h2>
+          <p class="card-sub" data-i18n="musicSub">מאתר המנגן מיוזיק</p>
+        </div>
+      </header>
+      <div class="card-body" id="musicBody"><div class="shimmer">טוען...</div></div>
+    </article>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="site-footer">
+      <div class="ft-credit">
+        © <span data-i18n="rightsAll">כל הזכויות שמורות למעבדות שלימות</span>
+      </div>
+      <div class="ft-credit-en">© All rights reserved to Studio Shlemut Labs</div>
+      <div class="ft-lab" data-i18n="labLocation">בית שמש · ישראל</div>
+    </footer>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close>×</button>
+      <h3 class="modal-title" id="modalTitle">—</h3>
+      <div class="modal-meta" id="modalMeta">—</div>
+      <div class="modal-body" id="modalBody">—</div>
+      <a class="modal-link" id="modalLink" target="_blank" rel="noopener" hidden>
+        <span data-i18n="wikiLink">לערך המלא בויקיפדיה</span> ↗
+      </a>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- External Hebrew calendar libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/kosher-zmanim@0.9.0/dist/kosher-zmanim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@hebcal/core@6.5.1/dist/bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@hebcal/learning@6.4.4/dist/bundle.min.js"></script>
+
+  <!-- App -->
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

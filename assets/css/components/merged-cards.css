@@ -1,0 +1,71 @@
+/* יומיומי · Merged cards styles */
+
+/* ═══════════════ Tekufot + Lunar merged ═══════════════ */
+.tl-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-5);
+  align-items: stretch;
+}
+@media (max-width: 680px) {
+  .tl-split { grid-template-columns: 1fr; }
+}
+.tl-section-title {
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--c-accent);
+  margin-bottom: var(--s-3);
+  font-weight: 700;
+}
+.tl-left, .tl-right {
+  padding: var(--s-3);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--r-md);
+}
+body[data-tone="light"] .tl-left,
+body[data-tone="light"] .tl-right {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ═══════════════ Yahrzeit + HebCal merged ═══════════════ */
+.hebcal-merged {
+  font-size: var(--t-md);
+  line-height: 1.7;
+  margin-bottom: var(--s-5);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 25%, transparent);
+}
+/* The "today in calendar" content from HaMichlol — make text BIG and uniform color */
+.hebcal-merged .hm-content,
+.hebcal-merged .hm-content * {
+  font-size: clamp(1.05rem, 2vw, 1.25rem) !important;
+  line-height: 1.7 !important;
+  color: var(--c-text) !important; /* WHITE in dark / BLACK in light — uniform */
+  font-weight: 500 !important;
+}
+.hebcal-merged .hm-content b,
+.hebcal-merged .hm-content strong {
+  font-weight: 800 !important;
+  color: var(--c-text) !important;
+}
+.hebcal-merged .hm-content a {
+  color: var(--c-accent-2) !important;
+  font-weight: 700 !important;
+  text-decoration: none;
+  border-bottom: 2px solid color-mix(in srgb, var(--c-accent-2) 40%, transparent);
+}
+.hebcal-merged .hm-content a:hover {
+  color: var(--c-accent) !important;
+  border-bottom-color: var(--c-accent);
+}
+
+.yahrzeit-section-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 700;
+  color: var(--c-accent-2);
+  margin: 0 0 var(--s-3);
+}
+.yahrzeit-section { margin-top: var(--s-3); }

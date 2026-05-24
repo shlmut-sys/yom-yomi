@@ -1,0 +1,61 @@
+.halacha-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 720px) {
+  .halacha-list { grid-template-columns: 1fr; }
+}
+.halacha-item {
+  padding: var(--s-5);
+  background: rgba(255, 255, 255, 0.05);
+  border-inline-start: 5px solid var(--c-accent);
+  border-radius: var(--r-md);
+  position: relative;
+  transition: all var(--t-fast) var(--ease-out);
+}
+body[data-tone="light"] .halacha-item {
+  background: rgba(0, 0, 0, 0.04);
+}
+.halacha-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+body[data-tone="light"] .halacha-item:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+.halacha-item::before {
+  content: counter(halacha-counter);
+  counter-increment: halacha-counter;
+  position: absolute;
+  top: -16px;
+  inset-inline-start: 16px;
+  background: var(--c-accent);
+  color: white;
+  padding: 0 12px;
+  font-family: var(--f-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: var(--r-pill);
+  min-width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px var(--c-accent-glow);
+}
+.halacha-list { counter-reset: halacha-counter; }
+.halacha-text {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.75;
+  color: var(--c-text);
+  font-weight: 500;
+}
+.halacha-src {
+  display: block;
+  margin-top: var(--s-3);
+  font-family: var(--f-mono);
+  font-size: 0.95rem;
+  color: var(--c-accent-2);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}

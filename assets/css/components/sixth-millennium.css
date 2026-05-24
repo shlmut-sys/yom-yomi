@@ -1,0 +1,85 @@
+/* Sixth Millennium Clock — featured, full-width, animated */
+.card-sixth-mil {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--c-accent) 14%, transparent),
+    color-mix(in srgb, var(--c-accent-2) 10%, transparent),
+    color-mix(in srgb, var(--c-accent-3) 14%, transparent));
+  position: relative;
+  overflow: hidden;
+}
+.card-sixth-mil::before {
+  background: linear-gradient(135deg,
+    var(--c-accent),
+    transparent 35%,
+    var(--c-accent-2) 65%,
+    transparent 100%) !important;
+  opacity: 0.9 !important;
+}
+.card-sixth-mil::after {
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 30%, color-mix(in srgb, var(--c-accent) 35%, transparent), transparent 60%),
+    radial-gradient(ellipse 50% 70% at 80% 70%, color-mix(in srgb, var(--c-accent-2) 30%, transparent), transparent 60%) !important;
+  opacity: 0.85 !important;
+  animation: hero-pulse 6s ease-in-out infinite;
+}
+
+.sm-timer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+  position: relative;
+  z-index: 1;
+}
+.sm-unit {
+  text-align: center;
+  padding: var(--s-3) var(--s-2);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  transition: transform var(--t-fast);
+}
+.sm-unit:hover { transform: translateY(-3px); }
+.sm-num {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: var(--c-accent-2);
+  line-height: 1;
+  text-shadow: 0 0 18px var(--c-accent-glow);
+  direction: ltr;
+  animation: sm-tick 1s ease-out;
+}
+@keyframes sm-tick {
+  0% { transform: scale(1.1); opacity: 0.6; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.sm-lbl {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--c-text-3);
+  margin-top: var(--s-1);
+}
+.sm-target {
+  text-align: center;
+  margin-top: var(--s-3);
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-accent);
+  letter-spacing: 0.04em;
+}
+.sm-note {
+  text-align: center;
+  margin-top: var(--s-2);
+  font-size: var(--t-xs);
+  color: var(--c-text-3);
+  font-style: italic;
+}
+
+@media (max-width: 680px) {
+  .sm-timer { grid-template-columns: repeat(3, 1fr); }
+}

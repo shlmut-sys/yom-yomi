@@ -1,0 +1,160 @@
+{
+  "month": "sivan",
+  "monthHe": "סיוון",
+  "source": "ספרי חכמי הספרדים (תרומת המשתמש)",
+  "lastUpdated": "2026-05-24",
+  "entries": {
+    "1": [
+      { "name": "חכם אברהם הכהן", "yearHe": "תרל\"ד", "yearGreg": 1874, "tags": ["sephardi"] },
+      { "name": "חכם דוד חיים יצחק הכהן טנוג'י", "yearHe": "תר\"ז", "yearGreg": 1847, "tags": ["sephardi"] },
+      { "name": "חכם יוסף נסים בורלא", "yearHe": "תרס\"ג", "yearGreg": 1903, "birthYearHe": "תקפ\"ח", "birthYearGreg": 1828, "tags": ["sephardi"] },
+      { "name": "חכם רפאל חיים בנימין פרץ", "yearHe": "תר\"ם", "yearGreg": 1880, "birthYearHe": "תק\"ע", "birthYearGreg": 1810, "tags": ["sephardi"] }
+    ],
+    "2": [
+      { "name": "חכם דוד חיים שלוש", "yearHe": "תשע\"ו", "yearGreg": 2016, "birthYearHe": "י' טבת תר\"פ", "birthYearGreg": 1920, "tags": ["sephardi", "modern"] },
+      { "name": "חכם חיים ניסים חזקיה חורי", "yearHe": "תש\"ן", "yearGreg": 1990, "birthYearHe": "ט\"ו ניסן תרע\"ט", "birthYearGreg": 1919, "tags": ["sephardi"] },
+      { "name": "חכם יעקב דוויק הכהן", "yearHe": "תרע\"ט", "yearGreg": 1929, "birthYearHe": "תקפ\"ח", "birthYearGreg": 1828, "tags": ["sephardi"] }
+    ],
+    "3": [
+      { "name": "חכם יוסף אירגאס", "yearHe": "ת\"ץ", "yearGreg": 1730, "birthYearHe": "תמ\"ה", "birthYearGreg": 1685, "tags": ["sephardi", "italy"] },
+      { "name": "חכם מרדכי עבאדי", "yearHe": "תרמ\"ג", "yearGreg": 1884, "birthYearHe": "תקפ\"ו", "birthYearGreg": 1826, "tags": ["sephardi"] }
+    ],
+    "4": [
+      { "name": "חכם יצחק צאלח מכמל", "yearHe": "תשי\"א", "yearGreg": 1951, "birthYearHe": "י\"ג תשרי תרל\"ו", "birthYearGreg": 1875, "tags": ["sephardi", "yemenite"] },
+      { "name": "חכם מנצור מרזוק", "yearHe": "תקמ\"ג", "yearGreg": 1783, "birthYearHe": "תפ\"ג", "birthYearGreg": 1723, "tags": ["sephardi"] },
+      { "name": "חכם משה בארקי", "yearHe": "תרע\"ג", "yearGreg": 1913, "birthYearHe": "תקפ\"ט", "birthYearGreg": 1829, "tags": ["sephardi"] },
+      { "name": "חכם שלמה אוליוירה", "yearHe": "תס\"ח", "yearGreg": 1708, "birthYearHe": "שצ\"ה", "birthYearGreg": 1635, "tags": ["sephardi"] }
+    ],
+    "5": [
+      { "name": "חכם יהושע שלמה ארדיט", "yearHe": "תרל\"ו", "yearGreg": 1876, "birthYearHe": "תקמ\"ט", "birthYearGreg": 1789, "tags": ["sephardi"] },
+      { "name": "חכם מארי שלמה אלחראזי", "yearHe": "", "yearGreg": null, "tags": ["sephardi", "yemenite"] },
+      { "name": "חכם פנחס הכהן", "yearHe": "תרפ\"ח", "yearGreg": 1928, "tags": ["sephardi"] },
+      { "name": "רבי לוי יצחק מבארדיטשוב - \"קדושת לוי\"", "yearHe": "תק\"ע", "yearGreg": 1810, "note": "הסניגור של עם ישראל", "tags": ["chassidut"] }
+    ],
+    "6": [
+      { "name": "חכם מרדכי כמוס אמייס הכהן", "yearHe": "תשל\"ד", "yearGreg": 1974, "birthYearHe": "תרמ\"ו", "birthYearGreg": 1886, "tags": ["sephardi"] },
+      { "name": "חכם משה סולאם", "yearHe": "תשט\"ז", "yearGreg": 1956, "tags": ["sephardi"] },
+      { "name": "דוד המלך", "yearHe": "", "yearGreg": null, "note": "נפטר בעצרת - חג השבועות", "tags": ["biblical"] }
+    ],
+    "7": [
+      { "name": "חכם סלימן דוד ששון", "yearHe": "תשמ\"ה", "yearGreg": 1985, "birthYearHe": "ד\" אלול תרע\"ה", "birthYearGreg": 1905, "tags": ["sephardi"] },
+      { "name": "חכם ראובן בן דוד", "yearHe": "תשל\"ה", "yearGreg": 1975, "birthYearHe": "תרפ\"ג", "birthYearGreg": 1923, "tags": ["sephardi"] },
+      { "name": "רבי שמואל אהרון ראבינוביץ - מטשעחנוב", "yearHe": "תרצ\"ב", "yearGreg": 1932, "tags": ["chassidut"] }
+    ],
+    "8": [
+      { "name": "חכם אברהם חמוי", "yearHe": "תרמ\"ו", "yearGreg": 1886, "birthYearHe": "ט\" כסלו תקצ\"ט", "birthYearGreg": 1838, "tags": ["sephardi"] },
+      { "name": "חכם אהרן די טולידו (הראשון)", "yearHe": "תקי\"א", "yearGreg": 1751, "birthYearHe": "ת\"ס", "birthYearGreg": 1700, "tags": ["sephardi"] },
+      { "name": "חכם מבורך ברהנץ", "yearHe": "תרנ\"ד", "yearGreg": 1894, "birthYearHe": "תקפ\"ד", "birthYearGreg": 1824, "tags": ["sephardi"] },
+      { "name": "חכם משה נחמיה כהניו", "yearHe": "תרמ\"ז", "yearGreg": 1887, "birthYearHe": "תקע\"ז", "birthYearGreg": 1817, "tags": ["sephardi"] }
+    ],
+    "9": [
+      { "name": "חכם אהרן עזריאל", "yearHe": "תרל\"ט", "yearGreg": 1879, "birthYearHe": "תקע\"ט", "birthYearGreg": 1819, "tags": ["sephardi"] },
+      { "name": "חכם יעקב חיים סופר", "yearHe": "תרצ\"ט", "yearGreg": 1939, "birthYearHe": "תר\"ל", "birthYearGreg": 1870, "note": "מחבר \"כף החיים\"", "tags": ["sephardi"] },
+      { "name": "חכם יעקב מאיר", "yearHe": "תרצ\"ט", "yearGreg": 1939, "birthYearHe": "ז\" אדר תרט\"ז", "birthYearGreg": 1856, "note": "הראשון לציון", "tags": ["sephardi"] },
+      { "name": "רבן יוחנן בן זכאי", "yearHe": "", "yearGreg": null, "note": "נשיא הסנהדרין אחרי החורבן", "tags": ["talmud"] }
+    ],
+    "10": [
+      { "name": "חכם דוד אלעזרוף", "yearHe": "תשל\"ה", "yearGreg": 1975, "birthYearHe": "תרנ\"ט", "birthYearGreg": 1899, "tags": ["sephardi"] },
+      { "name": "חכם ישמעאל הכהן", "yearHe": "תקע\"א", "yearGreg": 1811, "birthYearHe": "תפ\"ד", "birthYearGreg": 1724, "tags": ["sephardi"] },
+      { "name": "חכם מארי ישעיהו משורר", "yearHe": "תשנ\"ח", "yearGreg": 1998, "birthYearHe": "תרע\"ח", "birthYearGreg": 1918, "tags": ["sephardi", "yemenite"] }
+    ],
+    "11": [
+      { "name": "חכם מארי יחיא יצחק הלוי", "yearHe": "תרצ\"ב", "yearGreg": 1932, "birthYearHe": "תרכ\"ז", "birthYearGreg": 1867, "tags": ["sephardi", "yemenite"] },
+      { "name": "חכם מתתיה ניסים טירני", "yearHe": "תקע\"ה", "yearGreg": 1815, "birthYearHe": "תק\"ה", "birthYearGreg": 1745, "tags": ["sephardi"] },
+      { "name": "חכם שמשון באקי", "yearHe": "תנ\"א", "yearGreg": 1691, "birthYearHe": "ת\"", "birthYearGreg": 1640, "tags": ["sephardi"] }
+    ],
+    "12": [
+      { "name": "חכם בן ציון רפאל הכהן פריצי", "yearHe": "תר\"ד", "yearGreg": 1844, "birthYearHe": "תקט\"ז", "birthYearGreg": 1756, "tags": ["sephardi"] },
+      { "name": "חכם שלמה סוכרי", "yearHe": "תרמ\"ו", "yearGreg": 1886, "tags": ["sephardi"] }
+    ],
+    "13": [
+      { "name": "חכם אברהם יצחקי", "yearHe": "תפ\"ט", "yearGreg": 1722, "birthYearHe": "תכ\"א", "birthYearGreg": 1661, "tags": ["sephardi"] },
+      { "name": "חכם אליהו בן הרוש", "yearHe": "תרמ\"ג", "yearGreg": 1883, "birthYearHe": "תק\"ע", "birthYearGreg": 1817, "tags": ["sephardi"] },
+      { "name": "חכם יעקב מוצפי", "yearHe": "תשמ\"ג", "yearGreg": 1983, "birthYearHe": "תר\"ס", "birthYearGreg": 1899, "tags": ["sephardi"] },
+      { "name": "חכם כמוס עגיב", "yearHe": "תשנ\"א", "yearGreg": 1991, "birthYearHe": "תרע\"ג", "birthYearGreg": 1913, "tags": ["sephardi"] },
+      { "name": "רבינו גרשום מאור הגולה", "yearHe": "ד'תשפ\"ח", "yearGreg": 1028, "note": "גזירותיו של רגמ\"ה", "tags": ["rishonim"] }
+    ],
+    "14": [
+      { "name": "חכם יוסף (וזיפה) הכהן יהונתן", "yearHe": "תשט\"ז", "yearGreg": 1956, "birthYearHe": "תרס\"ז", "birthYearGreg": 1907, "tags": ["sephardi"] },
+      { "name": "חכם ניסים יגן", "yearHe": "תש\"ס", "yearGreg": 2000, "birthYearHe": "תש\"א", "birthYearGreg": 1941, "tags": ["sephardi", "modern"] },
+      { "name": "הרב צבי אלימלך קאליש", "yearHe": "תשמ\"ג", "yearGreg": 1983, "birthYearHe": "תרס\"ג", "birthYearGreg": 1903, "tags": ["chassidut"] }
+    ],
+    "16": [
+      { "name": "חכם יעקב חדאד", "yearHe": "תש\"ט", "yearGreg": 1949, "birthYearHe": "תרל\"ב", "birthYearGreg": 1872, "tags": ["sephardi"] },
+      { "name": "חכם יעקב נחמני", "yearHe": "תשט\"ו", "yearGreg": 1954, "birthYearHe": "תרל\"ב", "birthYearGreg": 1871, "tags": ["sephardi"] },
+      { "name": "חכם יצחק חסון", "yearHe": "תרצ\"ט", "yearGreg": 1939, "tags": ["sephardi"] },
+      { "name": "חכם ישעיה עטיה", "yearHe": "תקנ\"ב", "yearGreg": 1792, "birthYearHe": "תצ\"ב", "birthYearGreg": 1732, "tags": ["sephardi"] },
+      { "name": "חכם ניסים טרבלסי", "yearHe": "תשנ\"ז", "yearGreg": 1997, "birthYearHe": "תר\"ע", "birthYearGreg": 1910, "tags": ["sephardi"] }
+    ],
+    "17": [
+      { "name": "הרב אהרן פרלוב", "yearHe": "תרל\"ב", "yearGreg": 1872, "birthYearHe": "תקס\"ב", "birthYearGreg": 1802, "tags": ["chassidut"] },
+      { "name": "חכם אליהו שריקי", "yearHe": "תשע\"ב", "yearGreg": 2012, "birthYearHe": "תרפ\"ב", "birthYearGreg": 1922, "tags": ["sephardi", "modern"] },
+      { "name": "רבי חיים ויטאל", "yearHe": "ש\"פ", "yearGreg": 1620, "note": "תלמיד האר\"י הקדוש", "tags": ["kabbalah"] }
+    ],
+    "18": [
+      { "name": "חכם יוסף חוסה פאור הלוי", "yearHe": "תש\"פ", "yearGreg": 2020, "birthYearHe": "תרצ\"ד", "birthYearGreg": 1934, "tags": ["sephardi", "modern"] },
+      { "name": "חכם ישראל זאב הלוי הורביץ", "yearHe": "תרכ\"א", "yearGreg": 1861, "birthYearHe": "תקל\"ח", "birthYearGreg": 1778, "tags": ["sephardi"] }
+    ],
+    "19": [
+      { "name": "חכם יהודה בן עטר", "yearHe": "תצ\"ג", "yearGreg": 1733, "birthYearHe": "אלול תט\"ו", "birthYearGreg": 1655, "tags": ["sephardi", "morocco"] },
+      { "name": "חכם רפאל מילדולה", "yearHe": "תקפ\"ח", "yearGreg": 1828, "birthYearHe": "תקי\"ד", "birthYearGreg": 1754, "tags": ["sephardi"] },
+      { "name": "חכם שאול דוד סתהון", "yearHe": "תר\"ץ", "yearGreg": 1930, "birthYearHe": "תרי\"א", "birthYearGreg": 1851, "tags": ["sephardi"] },
+      { "name": "חכם שלמה חכים", "yearHe": "תקצ\"ח", "yearGreg": 1838, "tags": ["sephardi"] }
+    ],
+    "20": [
+      { "name": "חכם חיים מרדכי לבטון", "yearHe": "תרכ\"ט", "yearGreg": 1869, "birthYearHe": "תק\"מ", "birthYearGreg": 1780, "tags": ["sephardi"] },
+      { "name": "חכם יהודה חי גיז", "yearHe": "תר\"נ", "yearGreg": 1890, "tags": ["sephardi"] },
+      { "name": "פרופ' יעקב מנחם שויקה", "yearHe": "תש\"פ", "yearGreg": 2020, "birthYearHe": "תרצ\"ו", "birthYearGreg": 1936, "note": "חוקר בר אילן", "tags": ["modern"] },
+      { "name": "חכם רפאל ביטון", "yearHe": "תשס\"א", "yearGreg": 2001, "birthYearHe": "תרע\"ו", "birthYearGreg": 1916, "tags": ["sephardi"] }
+    ],
+    "21": [
+      { "name": "חכם אברהם בושערה", "yearHe": "", "yearGreg": null, "tags": ["sephardi"] },
+      { "name": "חכם יוסף שאול אלישר", "yearHe": "תש\"ח", "yearGreg": 1948, "birthYearHe": "תרכ\"ז", "birthYearGreg": 1867, "tags": ["sephardi"] },
+      { "name": "חכם סעדיה הלוי מירקאדו", "yearHe": "ת\"ר", "yearGreg": 1840, "birthYearHe": "תקכ\"ח", "birthYearGreg": 1768, "tags": ["sephardi"] }
+    ],
+    "22": [
+      { "name": "חכם אליהו בכור חזן", "yearHe": "תרס\"ח", "yearGreg": 1908, "birthYearHe": "תר\"ח", "birthYearGreg": 1848, "tags": ["sephardi"] },
+      { "name": "חכם אליהו הכהן", "yearHe": "תשס\"ח", "yearGreg": 2008, "birthYearHe": "תרפ\"ו", "birthYearGreg": 1926, "tags": ["sephardi", "modern"] },
+      { "name": "חכם דוד מילדולה", "yearHe": "תק\"ע", "yearGreg": 1810, "birthYearHe": "תע\"ד", "birthYearGreg": 1714, "tags": ["sephardi"] },
+      { "name": "חכם יעקב יצחקי", "yearHe": "תרע\"ז", "yearGreg": 1917, "birthYearHe": "י\" אלול תר\"ו", "birthYearGreg": 1846, "tags": ["sephardi"] },
+      { "name": "חכם משה אזאגורי", "yearHe": "תש\"א", "yearGreg": 1941, "tags": ["sephardi"] }
+    ],
+    "23": [
+      { "name": "חכם חיים משה אמריליו", "yearHe": "תק\"ח", "yearGreg": 1748, "birthYearHe": "תנ\"ח", "birthYearGreg": 1698, "tags": ["sephardi"] },
+      { "name": "חכם רפאל אלאשווילי", "yearHe": "תשס\"ה", "yearGreg": 2005, "birthYearHe": "ניסן תרצ\"ד", "birthYearGreg": 1934, "tags": ["sephardi", "modern"] }
+    ],
+    "24": [
+      { "name": "חכם מסעוד הכהן אלחדאד", "yearHe": "תרפ\"ז", "yearGreg": 1927, "birthYearHe": "תק\"פ", "birthYearGreg": 1820, "tags": ["sephardi"] }
+    ],
+    "25": [
+      { "name": "חכם חיים הכהן", "yearHe": "תרס\"ה", "yearGreg": 1905, "birthYearHe": "ת\"ר", "birthYearGreg": 1839, "tags": ["sephardi"] },
+      { "name": "חכם מרדכי אליהו", "yearHe": "תש\"ע", "yearGreg": 2010, "note": "הראשון לציון, הרב הראשי הספרדי", "tags": ["sephardi", "modern"] },
+      { "name": "חכם רפאל מאיר חסן", "yearHe": "תר\"ד", "yearGreg": 1844, "tags": ["sephardi"] },
+      { "name": "רבן שמעון בן גמליאל - מעשרה הרוגי מלכות", "yearHe": "", "yearGreg": null, "tags": ["talmud"] },
+      { "name": "רבי ישמעאל בן אלישע כהן גדול", "yearHe": "", "yearGreg": null, "note": "מי' הרוגי מלכות", "tags": ["talmud"] }
+    ],
+    "26": [
+      { "name": "חכם אהרון מעלי הכהן טוויל", "yearHe": "תרע\"ו", "yearGreg": 1916, "tags": ["sephardi"] },
+      { "name": "חכם מימון יאפיל (יפה)", "yearHe": "תפ\"ז", "yearGreg": 1727, "tags": ["sephardi"] },
+      { "name": "רבי משה חיים לוצאטו - הרמח\"ל", "yearHe": "תק\"ז", "yearGreg": 1747, "note": "בעל \"מסילת ישרים\"", "tags": ["kabbalah", "mussar"] }
+    ],
+    "27": [
+      { "name": "חכם משה אדרעי", "yearHe": "תר\"ב", "yearGreg": 1842, "birthYearHe": "תקל\"ה", "birthYearGreg": 1775, "tags": ["sephardi"] },
+      { "name": "חכם משה איררה", "yearHe": "תשי\"ח", "yearGreg": 1958, "birthYearHe": "תרל\"ח", "birthYearGreg": 1878, "tags": ["sephardi"] },
+      { "name": "חכם משה יצחק אשכנזי טדסקי", "yearHe": "תרנ\"ח", "yearGreg": 1898, "birthYearHe": "תקפ\"א", "birthYearGreg": 1821, "tags": ["sephardi"] },
+      { "name": "חכם משה עמבר", "yearHe": "תשנ\"ג", "yearGreg": 1993, "birthYearHe": "תרס\"ט", "birthYearGreg": 1909, "tags": ["sephardi", "modern"] }
+    ],
+    "28": [
+      { "name": "חכם אברהם חיים אדאדי", "yearHe": "תרל\"ד", "yearGreg": 1874, "birthYearHe": "תקס\"א", "birthYearGreg": 1801, "tags": ["sephardi"] },
+      { "name": "חכם וציף יתרו", "yearHe": "תשנ\"ז", "yearGreg": 1997, "birthYearHe": "תרע\"ז", "birthYearGreg": 1917, "tags": ["sephardi"] },
+      { "name": "חכם רפאל שלמה מורדוך", "yearHe": "תקצ\"ו", "yearGreg": 1846, "birthYearHe": "תק\"כ", "birthYearGreg": 1760, "tags": ["sephardi"] }
+    ],
+    "29": [
+      { "name": "חכם גד נבון", "yearHe": "תשס\"ו", "yearGreg": 2006, "birthYearHe": "תר\"פ", "birthYearGreg": 1920, "tags": ["sephardi", "modern"] },
+      { "name": "חכם שלמה דאנה", "yearHe": "תרע\"ג", "yearGreg": 1913, "birthYearHe": "תר\"י", "birthYearGreg": 1850, "tags": ["sephardi"] }
+    ],
+    "30": [
+      { "name": "חכם יוסף יצחק שלוש", "yearHe": "תש\"ך", "yearGreg": 1960, "birthYearHe": "תר\"נ", "birthYearGreg": 1890, "tags": ["sephardi"] }
+    ]
+  }
+}

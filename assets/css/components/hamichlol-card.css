@@ -1,0 +1,90 @@
+/* יומיומי · Cards driven by HaMichlol main page */
+
+.card-hamichlol .card-body {
+  max-height: 460px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-accent) transparent;
+  padding-inline-end: var(--s-2);
+}
+.card-hamichlol .card-body::-webkit-scrollbar { width: 6px; }
+.card-hamichlol .card-body::-webkit-scrollbar-thumb {
+  background: var(--c-accent);
+  border-radius: 999px;
+}
+
+/* HTML scraped from HaMichlol — normalize fonts/colors to our theme */
+.hm-content {
+  font-family: var(--f-sans);
+  font-size: var(--t-sm);
+  line-height: 1.6;
+  color: var(--c-text);
+}
+.hm-content p { margin: 0 0 var(--s-2); }
+.hm-content a {
+  color: var(--c-accent-2);
+  text-decoration: none;
+  border-bottom: 1px dotted color-mix(in srgb, var(--c-accent-2) 50%, transparent);
+  transition: color var(--t-fast);
+}
+.hm-content a:hover {
+  color: var(--c-accent);
+  border-bottom-color: var(--c-accent);
+}
+.hm-content b, .hm-content strong { color: var(--c-text); font-weight: 700; }
+.hm-content ul, .hm-content ol {
+  margin: 0 var(--s-4) var(--s-3);
+  padding: 0;
+}
+.hm-content li {
+  margin-bottom: var(--s-2);
+  list-style: disc;
+}
+.hm-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+  margin: var(--s-2) 0;
+}
+.hm-content .thumb, .hm-content .thumbinner, .hm-content .floatleft, .hm-content .floatright {
+  margin: var(--s-2) 0;
+  max-width: 100%;
+}
+.hm-content .thumbcaption, .hm-content .caption {
+  font-size: var(--t-xs);
+  color: var(--c-text-3);
+  margin-top: var(--s-1);
+  font-style: italic;
+}
+.hm-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--s-2) 0;
+}
+.hm-content td, .hm-content th {
+  padding: var(--s-2);
+  border: 1px solid var(--c-border);
+  font-size: var(--t-sm);
+}
+.hm-content h3, .hm-content h4 {
+  font-size: var(--t-md);
+  color: var(--c-accent);
+  margin: var(--s-3) 0 var(--s-2);
+  font-weight: 700;
+}
+.hm-empty {
+  padding: var(--s-4);
+  text-align: center;
+  color: var(--c-text-3);
+  font-style: italic;
+  font-size: var(--t-sm);
+}
+
+/* Featured article card is wider/taller */
+.card-featured .card-body { max-height: 540px; }
+
+/* Picture of day - emphasize image */
+.card-potd .hm-content img {
+  width: 100%;
+  border-radius: var(--r-md);
+}
