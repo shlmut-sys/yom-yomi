@@ -1,0 +1,89 @@
+/* =============================================================
+   יומיומי · Design Tokens — base colors, type, spacing
+   The daily palette overrides --c-accent etc. per weekday.
+   ============================================================= */
+
+:root {
+  /* Surface colors (dark base) */
+  --c-bg-0: #0a0716;
+  --c-bg-1: #14102a;
+  --c-bg-2: #1f1840;
+  --c-card: rgba(28, 22, 60, 0.55);
+  --c-card-strong: rgba(20, 16, 42, 0.85);
+  --c-card-hover: rgba(36, 28, 76, 0.65);
+
+  /* Borders */
+  --c-border: rgba(255, 255, 255, 0.08);
+  --c-border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Text */
+  --c-text: #f4f0ff;
+  --c-text-2: #cfc8e8;
+  --c-text-3: #8c85a8;
+  --c-text-muted: #5a5470;
+
+  /* Defaults (overridden by daily-colors.css per data-day) */
+  --c-accent: #e879f9;       /* primary daily accent */
+  --c-accent-2: #fbbf24;     /* secondary daily accent */
+  --c-accent-3: #38bdf8;     /* tertiary daily accent */
+  --c-accent-glow: rgba(232, 121, 249, 0.4);
+
+  /* Status */
+  --c-shabbat: #e0e7ff;
+  --c-chag: #fb923c;
+  --c-warning: #facc15;
+  --c-danger: #f87171;
+
+  /* Typography */
+  --f-sans: 'Assistant', 'Heebo', system-ui, -apple-system, sans-serif;
+  --f-mono: 'JetBrains Mono', 'SF Mono', Monaco, Consolas, monospace;
+  --f-display: 'Assistant', 'Heebo', sans-serif;
+
+  /* Type scale */
+  --t-xs: 0.72rem;
+  --t-sm: 0.85rem;
+  --t-md: 1rem;
+  --t-lg: 1.18rem;
+  --t-xl: 1.5rem;
+  --t-2xl: 2rem;
+  --t-3xl: 2.8rem;
+  --t-4xl: 4rem;
+  --t-5xl: 5.5rem;
+
+  /* Spacing */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4rem;
+
+  /* Radii */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* Shadows */
+  --sh-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --sh-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --sh-lg: 0 20px 50px rgba(0, 0, 0, 0.35);
+  --sh-glow: 0 0 40px var(--c-accent-glow);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast: 180ms;
+  --t-med: 320ms;
+  --t-slow: 600ms;
+  --t-aura: 2.5s;
+
+  /* Layout */
+  --page-max: 1440px;
+  --page-pad: clamp(1rem, 3vw, 2rem);
+  --grid-gap: clamp(0.75rem, 2vw, 1.25rem);
+}

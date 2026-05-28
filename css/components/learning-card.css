@@ -1,0 +1,38 @@
+.learning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s-4);
+}
+.learning-item {
+  padding: var(--s-4);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  transition: all var(--t-fast) var(--ease-out);
+}
+body[data-tone="light"] .learning-item {
+  background: rgba(255, 255, 255, 0.7);
+}
+.learning-item:hover {
+  border-color: var(--c-accent);
+  background: color-mix(in srgb, var(--c-accent) 10%, transparent);
+  transform: translateY(-3px);
+}
+.l-icon { font-size: 2rem; line-height: 1; }
+.l-label {
+  font-family: var(--f-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--c-text-3);
+  font-weight: 700;
+}
+.l-value {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.4;
+}

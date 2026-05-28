@@ -1,0 +1,125 @@
+/* יומיומי · Marquee (sliding right-to-left) carousels */
+
+.travel-marquee,
+.books-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+.travel-track,
+.books-track {
+  display: flex;
+  gap: var(--s-3);
+  width: max-content;
+  animation: marquee-rtl 60s linear infinite;
+}
+.travel-track:hover,
+.books-track:hover { animation-play-state: paused; }
+
+@keyframes marquee-rtl {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(50%); } /* shows duplicated half */
+}
+
+/* In LTR mode the direction flips */
+body[data-lang="en"] .travel-track,
+body[data-lang="en"] .books-track {
+  animation-name: marquee-ltr;
+}
+@keyframes marquee-ltr {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Individual cards inside marquee */
+.travel-marquee .travel-cell,
+.books-marquee .book-cell {
+  flex: 0 0 240px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-out);
+  display: flex;
+  flex-direction: column;
+}
+.travel-marquee .travel-cell:hover,
+.books-marquee .book-cell:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -10px var(--c-accent-glow);
+}
+.travel-marquee .travel-thumb,
+.books-marquee .book-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, var(--c-accent), var(--c-accent-3));
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+}
+.travel-marquee .travel-emoji-fallback,
+.books-marquee .book-emoji-fallback {
+  font-size: 2.5rem;
+  opacity: 0.85;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+}
+.travel-marquee .travel-info,
+.books-marquee .book-info {
+  padding: var(--s-3);
+  flex: 1;
+}
+.travel-marquee .travel-name,
+.books-marquee .book-name {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--c-text);
+  margin: 0 0 var(--s-1);
+  line-height: 1.3;
+}
+.travel-actions {
+  display: flex;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+}
+.travel-action {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+.travel-action:hover {
+  background: var(--c-accent);
+  color: white;
+  border-color: var(--c-accent);
+}
+body[data-tone="light"] .travel-action {
+  background: rgba(0,0,0,0.05);
+}
+.travel-marquee .travel-country {
+  font-family: var(--f-mono);
+  font-size: 0.65rem;
+  color: var(--c-accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0 0 var(--s-1);
+}
+.travel-marquee .travel-desc,
+.books-marquee .book-desc {
+  font-size: var(--t-xs);
+  line-height: 1.4;
+  color: var(--c-text-2);
+}

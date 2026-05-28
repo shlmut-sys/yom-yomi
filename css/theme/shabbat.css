@@ -1,0 +1,8 @@
+/* Shabbat-active state (between candle lighting Friday and tzeit Saturday) */
+body[data-shabbat="1"] .aurora { opacity: 0.75; filter: blur(100px); }
+body[data-shabbat="1"] .aurora-layer { animation-duration: 50s !important; }
+body[data-shabbat="1"] .brand-tag::after {
+  content: ' · שבת שלום';
+  color: var(--c-accent-2);
+  font-weight: 600;
+}

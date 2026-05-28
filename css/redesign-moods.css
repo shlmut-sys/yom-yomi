@@ -1,0 +1,237 @@
+/* =============================================================
+   יומיומי · MOOD VARIANTS — 9 backgrounds, rotate on schedule
+   Each mood overrides 6 mood-* tokens + tweaks orb layout/animation.
+   ============================================================= */
+
+/* ---------- 🌌 NIGHT — deep black + cool gold stars + indigo nebula ---------- */
+body[data-mood="night"] {
+  --mood-base-1: #050510;
+  --mood-base-2: #020208;
+  --mood-orb-1: #d4a843;
+  --mood-orb-2: #6c63ff;
+  --mood-orb-3: #c660ff;
+  --mood-veil: rgba(108, 99, 255, 0.04);
+  --mood-name: "לילה";
+}
+
+/* ---------- 🕯️ CANDLES — warm black + amber/fire flicker ---------- */
+body[data-mood="candles"] {
+  --mood-base-1: #1a0a02;
+  --mood-base-2: #0a0502;
+  --mood-orb-1: #ff8a3c;
+  --mood-orb-2: #ffd24a;
+  --mood-orb-3: #d4a843;
+  --mood-veil: rgba(255, 138, 60, 0.05);
+  --mood-name: "נרות";
+}
+body[data-mood="candles"] .mood-orb.o1 {
+  animation: orb-drift-a 22s ease-in-out infinite, candle-flicker 0.18s ease-in-out infinite;
+}
+body[data-mood="candles"] .mood-orb.o2 {
+  animation: orb-drift-b 28s ease-in-out infinite, candle-flicker 0.13s ease-in-out infinite reverse;
+}
+@keyframes candle-flicker {
+  0%, 100% { filter: blur(90px) brightness(1); }
+  50%      { filter: blur(95px) brightness(1.1); }
+}
+
+/* ---------- 🌠 AURORA — green/cyan/violet curtains ---------- */
+body[data-mood="aurora"] {
+  --mood-base-1: #02050a;
+  --mood-base-2: #020203;
+  --mood-orb-1: #30d158;
+  --mood-orb-2: #5ad8ff;
+  --mood-orb-3: #6c63ff;
+  --mood-veil: rgba(48, 209, 88, 0.03);
+  --mood-name: "זוהר צפוני";
+}
+body[data-mood="aurora"] .mood-orb {
+  filter: blur(120px);
+  opacity: 0.5;
+}
+body[data-mood="aurora"] .mood-orb.o1 {
+  width: 1200px; height: 380px;
+  top: 5%; right: -200px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, transparent, var(--mood-orb-1), transparent);
+  animation: aurora-wave-a 16s ease-in-out infinite;
+}
+body[data-mood="aurora"] .mood-orb.o2 {
+  width: 1400px; height: 320px;
+  bottom: 15%; left: -300px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, transparent, var(--mood-orb-2), var(--mood-orb-3), transparent);
+  animation: aurora-wave-b 20s ease-in-out infinite;
+}
+@keyframes aurora-wave-a {
+  0%, 100% { transform: translateY(0) skewY(-2deg); }
+  50%      { transform: translateY(40px) skewY(2deg); }
+}
+@keyframes aurora-wave-b {
+  0%, 100% { transform: translateY(0) skewY(3deg); }
+  50%      { transform: translateY(-40px) skewY(-3deg); }
+}
+
+/* ---------- 🌅 DAWN — black→deep purple→amber sunrise ---------- */
+body[data-mood="dawn"] {
+  --mood-base-1: #1a0a1f;
+  --mood-base-2: #050208;
+  --mood-orb-1: #ffd24a;
+  --mood-orb-2: #ff3b6b;
+  --mood-orb-3: #c660ff;
+  --mood-veil: rgba(255, 210, 74, 0.04);
+  --mood-name: "שחר";
+}
+body[data-mood="dawn"] .mood-orb.o1 {
+  width: 800px; height: 800px;
+  top: 30%; right: -300px;
+  opacity: 0.45;
+}
+body[data-mood="dawn"] .mood-orb.o3 {
+  width: 600px; height: 600px;
+  top: 60%; left: 50%;
+  opacity: 0.3;
+}
+
+/* ---------- ❄️ POLAR — icy blue + white + faint aurora ---------- */
+body[data-mood="polar"] {
+  --mood-base-1: #050a14;
+  --mood-base-2: #02060c;
+  --mood-orb-1: #a8dfff;
+  --mood-orb-2: #5ad8ff;
+  --mood-orb-3: #b8e8ff;
+  --mood-veil: rgba(168, 223, 255, 0.05);
+  --mood-name: "קוטב";
+}
+body[data-mood="polar"] .mood-orb {
+  filter: blur(110px);
+  opacity: 0.45;
+}
+body[data-mood="polar"] .mood-orb.o1 {
+  width: 700px; height: 700px;
+  top: -100px; right: 10%;
+}
+body[data-mood="polar"] .mood-orb.o3 {
+  width: 500px; height: 500px;
+  top: 50%; left: 30%;
+  background: radial-gradient(circle, rgba(255,255,255,0.7), transparent 70%);
+  opacity: 0.18;
+}
+
+/* ---------- 🌊 SEA — deep teal + cyan + soft swell ---------- */
+body[data-mood="sea"] {
+  --mood-base-1: #02151c;
+  --mood-base-2: #010a0f;
+  --mood-orb-1: #00b4a8;
+  --mood-orb-2: #38bdf8;
+  --mood-orb-3: #0d6e80;
+  --mood-veil: rgba(0, 180, 168, 0.05);
+  --mood-name: "ים";
+}
+body[data-mood="sea"] .mood-orb {
+  filter: blur(100px);
+  opacity: 0.55;
+}
+body[data-mood="sea"] .mood-orb.o1 {
+  width: 900px; height: 600px;
+  top: -150px; right: -150px;
+  animation: sea-swell-a 18s ease-in-out infinite;
+}
+body[data-mood="sea"] .mood-orb.o2 {
+  width: 1000px; height: 600px;
+  bottom: -200px; left: -200px;
+  animation: sea-swell-b 22s ease-in-out infinite;
+}
+@keyframes sea-swell-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-30px, 20px) scale(1.08); }
+}
+@keyframes sea-swell-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(40px, -25px) scale(1.06); }
+}
+
+/* ---------- 🏜️ DESERT — burnt orange + sand + dust haze ---------- */
+body[data-mood="desert"] {
+  --mood-base-1: #1f0e02;
+  --mood-base-2: #0d0501;
+  --mood-orb-1: #ff8a3c;
+  --mood-orb-2: #d4a843;
+  --mood-orb-3: #a04a18;
+  --mood-veil: rgba(255, 138, 60, 0.06);
+  --mood-name: "מדבר";
+}
+body[data-mood="desert"] .mood-orb.o1 {
+  width: 1000px; height: 500px;
+  top: 0; right: -200px;
+  filter: blur(110px);
+  opacity: 0.5;
+}
+body[data-mood="desert"] .mood-orb.o3 {
+  width: 800px; height: 400px;
+  bottom: 20%; left: 10%;
+  opacity: 0.35;
+}
+
+/* ---------- ❄️🌨️ SNOW — cold white-grey + falling flakes ---------- */
+body[data-mood="snow"] {
+  --mood-base-1: #0a0e1a;
+  --mood-base-2: #050810;
+  --mood-orb-1: #d6e4ff;
+  --mood-orb-2: #aab8d4;
+  --mood-orb-3: #ffffff;
+  --mood-veil: rgba(214, 228, 255, 0.04);
+  --mood-name: "שלג";
+}
+body[data-mood="snow"] .mood-orb {
+  opacity: 0.3;
+  filter: blur(120px);
+}
+/* falling snowflakes — added via mood-stars layer scaled up */
+body[data-mood="snow"] .mood-stars {
+  opacity: 1;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 5%, white, transparent),
+    radial-gradient(2px 2px at 25% 15%, white, transparent),
+    radial-gradient(1px 1px at 40% 25%, white, transparent),
+    radial-gradient(1.8px 1.8px at 60% 8%, white, transparent),
+    radial-gradient(1.2px 1.2px at 75% 18%, white, transparent),
+    radial-gradient(2px 2px at 90% 6%, white, transparent),
+    radial-gradient(1.5px 1.5px at 15% 35%, white, transparent),
+    radial-gradient(1px 1px at 50% 45%, white, transparent),
+    radial-gradient(1.8px 1.8px at 80% 38%, white, transparent);
+  background-size: 100% 100vh;
+  animation: snow-fall 12s linear infinite;
+}
+@keyframes snow-fall {
+  from { background-position-y: -100vh; }
+  to   { background-position-y: 100vh; }
+}
+
+/* ---------- 🍂 WINTER — cold dark blue + frost + slow drift ---------- */
+body[data-mood="winter"] {
+  --mood-base-1: #08101f;
+  --mood-base-2: #040810;
+  --mood-orb-1: #5b7fb8;
+  --mood-orb-2: #7a9cc6;
+  --mood-orb-3: #3a5680;
+  --mood-veil: rgba(91, 127, 184, 0.05);
+  --mood-name: "חורף";
+}
+body[data-mood="winter"] .mood-orb {
+  opacity: 0.4;
+  filter: blur(130px);
+  animation-duration: 35s !important;
+}
+
+/* ---------- transitions when switching mood ---------- */
+body { transition: background 2400ms cubic-bezier(0.4, 0, 0.2, 1), color 600ms ease; }
+.mood-orb {
+  transition:
+    background 2400ms ease,
+    width 2400ms ease, height 2400ms ease,
+    top 2400ms ease, bottom 2400ms ease,
+    left 2400ms ease, right 2400ms ease,
+    opacity 2400ms ease, filter 2400ms ease;
+}
+.mood-stars { transition: opacity 2400ms ease, background-image 2400ms ease; }

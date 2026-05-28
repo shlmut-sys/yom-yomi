@@ -1,0 +1,549 @@
+/* =============================================================
+   יומיומי · CARD LIFE — make cards feel alive & current
+   - 3D parallax tilt on hover (follows cursor)
+   - Glowing animated border
+   - "LIVE" pulse dot on cards that update frequently
+   - Mouse-tracking glow patch
+   - Subtle continuous breathing on key cards
+   - Reveal-on-scroll
+   ============================================================= */
+
+/* ---------- 3D parallax tilt ---------- */
+.card {
+  --mx: 50%;
+  --my: 50%;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition:
+    transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+.card:hover {
+  transform:
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y))
+    translateY(-4px);
+}
+
+/* mouse-tracking glow inside card */
+.card::after {
+  background:
+    radial-gradient(circle 240px at var(--mx) var(--my),
+      var(--gold-glow), transparent 70%);
+  opacity: 0;
+  transition: opacity 380ms ease;
+}
+.card:hover::after { opacity: 0.7; }
+
+/* animated gradient border on hover */
+.card.alive::before {
+  background: conic-gradient(
+    from var(--ang, 0deg),
+    var(--gold) 0%,
+    transparent 25%,
+    var(--rgb-b) 50%,
+    transparent 75%,
+    var(--gold) 100%);
+  opacity: 0.45;
+  animation: card-rim 8s linear infinite;
+}
+@property --ang {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes card-rim {
+  to { --ang: 360deg; }
+}
+
+/* ---------- LIVE pulse indicator ---------- */
+.card-live-badge {
+  position: absolute;
+  top: 14px;
+  inset-inline-start: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.55rem 0.2rem 0.45rem;
+  background: rgba(255, 60, 90, 0.15);
+  border: 1px solid rgba(255, 60, 90, 0.35);
+  border-radius: var(--r-pill);
+  font-family: var(--f-mono);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #ff8095;
+  text-transform: uppercase;
+  z-index: 2;
+  pointer-events: none;
+}
+.card-live-badge::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #ff3b6b;
+  box-shadow: 0 0 8px #ff3b6b;
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.6); }
+}
+
+/* "updated X ago" timestamp chip */
+.card-updated {
+  position: absolute;
+  top: 14px;
+  inset-inline-end: 14px;
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  color: var(--c-text-3);
+  letter-spacing: 0.08em;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* ---------- Subtle "breathing" on key cards ---------- */
+.card-chizuk-big, .card-sixth-mil, .hero {
+  animation: card-breathe 8s ease-in-out infinite;
+}
+@keyframes card-breathe {
+  0%, 100% { box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 0 32px -10px var(--gold-glow); }
+  50%      { box-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 0 64px -8px var(--gold-glow); }
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+.card.reveal-pending {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+.card.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------- Sparkle decorations for special cards ---------- */
+.card-sparkle {
+  position: absolute;
+  pointer-events: none;
+  font-size: 0.9rem;
+  color: var(--gold-light);
+  filter: drop-shadow(0 0 6px var(--gold-glow));
+  animation: sparkle-twinkle 3s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8) rotate(0deg); }
+  50%      { opacity: 1;   transform: scale(1.2) rotate(45deg); }
+}
+
+/* ============================================================
+   SETTINGS PANEL — interval picker + mood preferences
+   ============================================================ */
+.mood-settings-toggle {
+  background: transparent;
+  border: none;
+  color: var(--c-text-3);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  margin-inline-start: 0.2rem;
+  border-radius: var(--r-pill);
+  transition: color 180ms ease, transform 200ms ease;
+}
+.mood-settings-toggle:hover {
+  color: var(--gold);
+  transform: rotate(30deg);
+}
+
+.mood-settings {
+  position: fixed;
+  top: 90px;
+  inset-inline-end: clamp(1rem, 3vw, 2rem);
+  z-index: 1000;
+  width: min(360px, calc(100vw - 2rem));
+  background: rgba(10, 10, 12, 0.92);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: var(--sh-lg), 0 0 40px -12px var(--gold-glow);
+  opacity: 0;
+  transform: translateY(-12px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+.mood-settings.open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.mood-settings::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--gold), transparent 50%, var(--rgb-b));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.ms-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.ms-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.ms-close {
+  background: transparent;
+  border: none;
+  color: var(--c-text-3);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.1rem 0.4rem;
+  border-radius: 50%;
+  transition: color 180ms ease, background 180ms ease;
+}
+.ms-close:hover { color: var(--gold); background: rgba(255,255,255,0.05); }
+
+.ms-section {
+  margin-bottom: 1rem;
+}
+.ms-section:last-child { margin-bottom: 0; }
+.ms-label {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  margin-bottom: 0.5rem;
+}
+
+/* interval picker — segmented control */
+.ms-intervals {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.3rem;
+  padding: 0.25rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+}
+.ms-interval {
+  background: transparent;
+  border: none;
+  padding: 0.55rem 0.3rem;
+  color: var(--c-text-2);
+  font-family: var(--f-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 180ms ease;
+}
+.ms-interval:hover { color: var(--gold-light); background: rgba(212,168,67,0.06); }
+.ms-interval[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  color: #0a0a0a;
+  box-shadow: 0 4px 14px -2px var(--gold-glow);
+}
+
+/* shuffle toggle */
+.ms-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.85rem;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+}
+.ms-toggle-row + .ms-toggle-row { margin-top: 0.5rem; }
+.ms-toggle-row-text {
+  font-size: 0.88rem;
+  color: var(--c-text);
+  font-weight: 600;
+}
+.ms-toggle-row-sub {
+  font-size: 0.7rem;
+  color: var(--c-text-3);
+  font-weight: 400;
+  margin-top: 0.15rem;
+}
+.ms-switch {
+  position: relative;
+  width: 44px; height: 24px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 999px;
+  border: 1px solid var(--c-border);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+  flex-shrink: 0;
+}
+.ms-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 18px; height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1), background 200ms ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.ms-switch[aria-pressed="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+.ms-switch[aria-pressed="true"]::after {
+  transform: translateX(20px);
+  background: #0a0a0a;
+}
+
+/* moods checkbox grid */
+.ms-moods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+.ms-mood-chip {
+  position: relative;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--c-border);
+  border-radius: 10px;
+  padding: 0.55rem 0.4rem;
+  color: var(--c-text-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 180ms ease;
+}
+.ms-mood-chip:hover {
+  border-color: var(--c-border-strong);
+  background: rgba(212,168,67,0.05);
+}
+.ms-mood-chip[aria-pressed="true"] {
+  border-color: var(--gold);
+  background: rgba(212,168,67,0.12);
+  color: var(--gold-light);
+  box-shadow: 0 0 14px -4px var(--gold-glow);
+}
+.ms-mood-chip[aria-pressed="false"] {
+  opacity: 0.5;
+}
+.ms-mood-emoji { font-size: 1.1rem; line-height: 1; }
+
+@media (max-width: 540px) {
+  .mood-settings {
+    inset-inline-start: 1rem;
+    inset-inline-end: 1rem;
+    width: auto;
+    top: 80px;
+  }
+  .ms-intervals { grid-template-columns: repeat(3, 1fr); }
+  .ms-intervals .ms-interval:nth-child(4),
+  .ms-intervals .ms-interval:nth-child(5) { grid-column: span 1; }
+}
+
+/* ============================================================
+   YOUTUBE CHANNEL CARD — Rabbi Nachman videos marquee
+   ============================================================ */
+.card-youtube {
+  position: relative;
+  overflow: hidden;
+}
+.yt-marquee {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -0.5rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.yt-track {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.5rem;
+  animation: yt-scroll 60s linear infinite;
+  will-change: transform;
+}
+.yt-track:hover { animation-play-state: paused; }
+@keyframes yt-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.yt-card {
+  flex-shrink: 0;
+  width: 240px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+  display: flex;
+  flex-direction: column;
+}
+.yt-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--gold);
+  box-shadow: 0 16px 36px -8px rgba(0,0,0,0.6), 0 0 24px -6px var(--gold-glow);
+}
+.yt-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+.yt-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 320ms ease, filter 320ms ease;
+  filter: saturate(0.9);
+}
+.yt-card:hover .yt-thumb img {
+  transform: scale(1.06);
+  filter: saturate(1.1);
+}
+.yt-thumb::after {
+  content: "▶";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 2.2rem;
+  color: white;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.8);
+  opacity: 0.7;
+  transition: opacity 240ms ease, transform 240ms ease;
+}
+.yt-card:hover .yt-thumb::after {
+  opacity: 1;
+  transform: scale(1.15);
+}
+.yt-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.7));
+  z-index: 1;
+}
+.yt-meta {
+  padding: 0.7rem 0.8rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.yt-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.yt-date {
+  font-family: var(--f-mono);
+  font-size: 0.62rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+.yt-channel-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #ff0033, #cc0029);
+  color: white;
+  border-radius: var(--r-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.yt-channel-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 0, 51, 0.4);
+}
+.yt-foot {
+  text-align: center;
+  margin-top: 0.85rem;
+}
+
+/* ============================================================
+   PARSHA TICKER — scrolling banner at very top of page
+   ============================================================ */
+.parsha-ticker {
+  position: relative;
+  margin: 0 0 1rem;
+  padding: 0.5rem 0;
+  background: linear-gradient(90deg,
+    rgba(212,168,67,0.06) 0%,
+    rgba(108,99,255,0.08) 50%,
+    rgba(212,168,67,0.06) 100%);
+  border-top: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 3%, black 97%, transparent);
+}
+.parsha-ticker-track {
+  display: flex;
+  gap: 3rem;
+  white-space: nowrap;
+  animation: ticker-scroll 50s linear infinite;
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.parsha-ticker:hover .parsha-ticker-track { animation-play-state: paused; }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.parsha-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.parsha-ticker-item .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold-glow);
+  flex-shrink: 0;
+}

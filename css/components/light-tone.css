@@ -1,0 +1,95 @@
+/* יומיומי · Light tone (white background default) */
+
+body[data-tone="light"] {
+  --c-bg-0: #fafbff;
+  --c-bg-1: #ffffff;
+  --c-bg-2: #f0eafa;
+  --c-card: rgba(255, 255, 255, 0.92);
+  --c-card-strong: rgba(255, 255, 255, 1);
+  --c-card-hover: rgba(255, 255, 255, 1);
+  --c-border: rgba(0, 0, 0, 0.08);
+  --c-border-strong: rgba(0, 0, 0, 0.2);
+  --c-text: #1a1238;
+  --c-text-2: #3a2f5a;
+  --c-text-3: #6b5e8a;
+  --c-text-muted: #9a8fb4;
+}
+
+body[data-tone="light"] {
+  background:
+    radial-gradient(ellipse at top, var(--c-bg-1), var(--c-bg-0)),
+    var(--c-bg-0);
+}
+body[data-tone="light"] .aurora { opacity: 0.28; filter: blur(140px); }
+body[data-tone="light"] .stars { display: none; }
+
+/* Card shadows in light mode */
+body[data-tone="light"] .card {
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.06);
+}
+body[data-tone="light"] .card:hover {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== HaMichlol content — full color override ===== */
+.hm-content {
+  color: var(--c-text) !important;
+}
+.hm-content * {
+  color: inherit !important;
+}
+.hm-content a {
+  color: var(--c-accent) !important;
+  background: none !important;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--c-accent) 40%, transparent);
+}
+.hm-content a:hover {
+  color: var(--c-accent-2) !important;
+  border-bottom-color: var(--c-accent-2);
+}
+/* Strip yellow/colored highlights from inline styles */
+.hm-content [style*="background"] {
+  background: transparent !important;
+}
+.hm-content [style*="color: rgb"],
+.hm-content [style*="color:#"] {
+  color: var(--c-text) !important;
+}
+.hm-content b, .hm-content strong {
+  color: var(--c-text) !important;
+  font-weight: 800;
+}
+
+/* Light tone — zmanim time numbers stay accent color */
+body[data-tone="light"] .card-zmanim .zg-time { color: var(--c-accent); }
+body[data-tone="light"] .hero-time { color: var(--c-accent); }
+
+/* Brand mega — in light mode use deeper saturated colors */
+body[data-tone="light"] .mega-name .ml {
+  text-shadow: 0 4px 24px rgba(232, 121, 249, 0.25);
+}
+
+/* Header buttons in light mode */
+body[data-tone="light"] .hdr-btn-big {
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1238;
+  border-color: rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+body[data-tone="light"] .hdr-btn-big:hover {
+  background: white;
+  border-color: var(--c-accent);
+}
+
+/* Toast in light mode */
+body[data-tone="light"] .toast {
+  background: white;
+  color: #1a1238;
+  border-color: var(--c-accent);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}

@@ -1,0 +1,143 @@
+/* יומיומי · Header + Mega Brand */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) 0 var(--s-2);
+  position: relative;
+  z-index: 10;
+}
+
+/* Big header buttons — much bigger than before */
+.hdr-btn-big {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: var(--c-card);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 2px solid var(--c-border);
+  border-radius: var(--r-pill);
+  padding: 0.7rem 1.2rem;
+  color: var(--c-text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all var(--t-fast) var(--ease-out);
+  min-height: 48px;
+  box-shadow: var(--sh-sm);
+}
+.hdr-btn-big:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--c-accent-glow);
+  background: var(--c-card-hover);
+}
+.hdr-btn-big:active {
+  transform: translateY(0);
+}
+.hdr-btn-big .lang-current {
+  font-family: var(--f-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+.hdr-btn-big .loc-icon { font-size: 1.2rem; }
+.hdr-btn-big .loc-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.hdr-btn-big #toneIcon { font-size: 1.25rem; }
+
+/* ═══════════════ MEGA BRAND (centered, big, animated) ═══════════════ */
+.mega-brand {
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 3rem) 1rem clamp(1rem, 2.5vw, 2rem);
+  position: relative;
+}
+
+.mega-name {
+  font-family: var(--f-display);
+  font-size: clamp(4rem, 11vw, 8.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin: 0 0 var(--s-4);
+  text-align: center;
+  direction: rtl;
+}
+.mega-name .ml {
+  display: inline-block;
+  background: linear-gradient(135deg,
+    #e879f9 0%,
+    #fbbf24 25%,
+    #38bdf8 50%,
+    #10b981 75%,
+    #f43f5e 100%);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    rainbow-shift 6s ease infinite,
+    letter-bounce 3s ease-in-out infinite;
+  text-shadow: 0 0 60px rgba(232, 121, 249, 0.4);
+}
+.mega-name .ml[data-i="0"] { animation-delay: 0s, 0s; }
+.mega-name .ml[data-i="1"] { animation-delay: 0.15s, 0.2s; }
+.mega-name .ml[data-i="2"] { animation-delay: 0.3s, 0.4s; }
+.mega-name .ml[data-i="3"] { animation-delay: 0.45s, 0.6s; }
+.mega-name .ml[data-i="4"] { animation-delay: 0.6s, 0.8s; }
+.mega-name .ml[data-i="5"] { animation-delay: 0.75s, 1s; }
+.mega-name .ml[data-i="6"] { animation-delay: 0.9s, 1.2s; }
+@keyframes rainbow-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes letter-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.mega-tag {
+  font-family: var(--f-display);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  margin: 0;
+  background: linear-gradient(90deg,
+    #ec4899 0%,
+    #8b5cf6 25%,
+    #06b6d4 50%,
+    #10b981 75%,
+    #f59e0b 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tag-shift 5s linear infinite;
+  letter-spacing: 0.02em;
+}
+@keyframes tag-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@media (max-width: 680px) {
+  .site-header {
+    flex-wrap: wrap;
+    gap: var(--s-2);
+    padding: var(--s-2) 0;
+  }
+  .hdr-btn-big {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+  .mega-name { font-size: 3.5rem; }
+  .mega-tag { font-size: 1.1rem; }
+}

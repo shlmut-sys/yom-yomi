@@ -1,0 +1,227 @@
+/* =============================================================
+   יומיומי · NEWSLETTER — subscribe card + floating prompt
+   ============================================================= */
+
+/* ---------- INLINE CARD ---------- */
+.card-newsletter {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 100% at 50% 0%, rgba(212,168,67,0.16), transparent 65%),
+    linear-gradient(135deg, rgba(20,16,10,0.85), rgba(10,10,12,0.8));
+  border: 1px solid rgba(212,168,67,0.3);
+  text-align: center;
+}
+.card-newsletter .card-head { justify-content: center; }
+.nl-card-body { position: relative; z-index: 1; }
+.nl-headline {
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  margin: 0.5rem 0 0.4rem;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 20px var(--gold-glow));
+}
+.nl-sub {
+  color: var(--c-text-2);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 520px;
+  margin: 0 auto 1.4rem;
+}
+
+/* ---------- FORM ---------- */
+.nl-form {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nl-form input[type="email"] {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: 0.9rem 1.1rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-pill);
+  color: var(--c-text);
+  font-family: var(--f-sans);
+  font-size: 1rem;
+  text-align: right;
+  direction: ltr;
+  transition: all 200ms ease;
+  min-height: 48px;
+}
+.nl-form input[type="email"]::placeholder { color: var(--c-text-3); }
+.nl-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(212,168,67,0.06);
+  box-shadow: 0 0 0 3px rgba(212,168,67,0.15), 0 0 24px -8px var(--gold-glow);
+}
+.nl-form button[type="submit"] {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.6rem;
+  background: var(--rgb-gradient);
+  background-size: 250% 100%;
+  color: #0a0a0a;
+  border: 0;
+  border-radius: var(--r-pill);
+  font-family: var(--f-sans);
+  font-size: 1rem;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: 48px;
+  box-shadow: 0 0 24px rgba(212,168,67,0.25), 0 0 50px rgba(108,99,255,0.12);
+  animation: rgb-flow 6s linear infinite;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.nl-form button[type="submit"]:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 36px rgba(212,168,67,0.4), 0 0 70px rgba(108,99,255,0.2);
+}
+.nl-form button[type="submit"]:active { transform: scale(0.97); }
+.nl-form button[type="submit"]:disabled { opacity: 0.6; cursor: wait; }
+
+.nl-msg {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  margin-top: 0.3rem;
+}
+.nl-msg-ok  { color: var(--green, #30d158); }
+.nl-msg-err { color: var(--rgb-r, #ff3b6b); }
+
+.nl-trust {
+  margin-top: 1rem;
+  font-family: var(--f-mono);
+  font-size: 0.68rem;
+  color: var(--c-text-3);
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.nl-trust span { display: inline-flex; align-items: center; gap: 0.3rem; }
+
+/* whatsapp channel option */
+.nl-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.55rem 1.1rem;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.4);
+  color: #4ee584;
+  border-radius: var(--r-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 200ms ease;
+}
+.nl-wa:hover {
+  background: rgba(37, 211, 102, 0.2);
+  transform: translateY(-2px);
+}
+
+/* subscribed state */
+.nl-subscribed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+.nl-sub-check {
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--green, #30d158), #1a9e42);
+  color: white;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  font-weight: 900;
+  box-shadow: 0 0 24px -4px rgba(48,209,88,0.5);
+}
+.nl-sub-text { text-align: right; }
+.nl-sub-text strong { display: block; color: var(--c-text); font-size: 1.05rem; }
+.nl-sub-text span { color: var(--c-text-3); font-size: 0.85rem; }
+
+/* ---------- FLOATING PROMPT (slide up bottom-right) ---------- */
+.nl-prompt {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 1100;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 1.1rem 1.2rem 1.2rem;
+  background: rgba(10, 10, 12, 0.94);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid var(--c-border-strong);
+  border-radius: 18px;
+  box-shadow: var(--sh-lg), 0 0 50px -12px var(--gold-glow);
+  transform: translateY(140%);
+  opacity: 0;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), opacity 400ms ease;
+}
+.nl-prompt.show { transform: translateY(0); opacity: 1; }
+.nl-prompt::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--gold), transparent 50%, var(--rgb-b));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.nl-prompt-close {
+  position: absolute;
+  top: 8px; left: 10px;
+  background: transparent;
+  border: none;
+  color: var(--c-text-3);
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+  border-radius: 50%;
+  width: 28px; height: 28px;
+  transition: color 180ms ease, background 180ms ease;
+}
+.nl-prompt-close:hover { color: var(--gold); background: rgba(255,255,255,0.05); }
+.nl-prompt-icon { font-size: 2rem; margin-bottom: 0.4rem; }
+.nl-prompt-text strong {
+  display: block;
+  color: var(--gold-light);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+.nl-prompt-text span {
+  display: block;
+  color: var(--c-text-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 0.9rem;
+}
+.nl-form-compact { flex-direction: column; align-items: stretch; max-width: none; }
+.nl-form-compact input[type="email"] { flex: 1 1 auto; }
+.nl-form-compact button[type="submit"] { width: 100%; }
+
+@media (max-width: 540px) {
+  .nl-prompt { right: 1rem; left: 1rem; width: auto; bottom: 12px; }
+}

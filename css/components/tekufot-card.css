@@ -1,0 +1,26 @@
+.tekufa-block {
+  text-align: center;
+  padding: var(--s-4);
+}
+.tekufa-name {
+  font-size: var(--t-lg);
+  font-weight: 700;
+  color: var(--c-accent-2);
+  margin-bottom: var(--s-1);
+}
+.tekufa-date {
+  font-family: var(--f-mono);
+  font-size: var(--t-md);
+  color: var(--c-text);
+  direction: ltr;
+}
+.tekufa-countdown {
+  margin-top: var(--s-3);
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-text-3);
+}
+.tekufa-countdown strong {
+  color: var(--c-accent);
+  font-weight: 700;
+}

@@ -1,0 +1,245 @@
+.quote {
+  font-family: var(--f-sans);
+  font-size: var(--t-md);
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--c-text);
+  position: relative;
+  padding: var(--s-3) 0 var(--s-2);
+  font-style: italic;
+}
+.quote::before {
+  content: '"';
+  position: absolute;
+  inset-inline-start: -0.3rem;
+  top: -0.7rem;
+  font-family: Georgia, serif;
+  font-size: 3.5rem;
+  color: var(--c-accent);
+  opacity: 0.4;
+  line-height: 1;
+  font-style: normal;
+}
+.quote-short {
+  font-size: var(--t-lg);
+  font-weight: 600;
+  font-style: normal;
+  text-align: center;
+}
+
+/* ========== Breslov card — rich animated version ========== */
+.card-breslov {
+  position: relative;
+  overflow: hidden;
+}
+.breslov-sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+.breslov-sparkles .sparkle {
+  position: absolute;
+  color: var(--c-accent-2);
+  font-size: 1.2rem;
+  opacity: 0;
+  text-shadow: 0 0 12px currentColor;
+  animation: sparkle-twinkle 4s ease-in-out infinite;
+}
+.breslov-sparkles .s1 { top:  8%; left:  10%; animation-delay: 0s; }
+.breslov-sparkles .s2 { top: 18%; right: 14%; animation-delay: 0.7s; font-size: 0.9rem; }
+.breslov-sparkles .s3 { top: 55%; left:  8%;  animation-delay: 1.4s; font-size: 1rem; }
+.breslov-sparkles .s4 { top: 80%; right: 18%; animation-delay: 2.1s; font-size: 0.85rem; }
+.breslov-sparkles .s5 { top: 40%; right:  8%; animation-delay: 2.8s; }
+@keyframes sparkle-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+  50%      { opacity: 1; transform: scale(1.15) rotate(45deg); }
+}
+
+.breslov-icon-wrap {
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.35), transparent 65%) !important;
+  border: 1px solid rgba(251, 191, 36, 0.5) !important;
+  box-shadow: 0 0 28px rgba(251, 191, 36, 0.5) !important;
+}
+.breslov-star {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+  animation: star-rotate 14s linear infinite, star-pulse 2.5s ease-in-out infinite;
+}
+@keyframes star-rotate { to { transform: rotate(360deg); } }
+@keyframes star-pulse {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.6)); }
+  50%      { filter: drop-shadow(0 0 20px rgba(251, 191, 36, 1)); }
+}
+
+.breslov-body {
+  position: relative;
+  z-index: 2;
+  min-height: 240px;
+  max-height: 540px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-accent-2) transparent;
+  padding-inline-end: var(--s-2);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== BIG Chizuk full-width with vertical auto-scroll ===== */
+.card-chizuk-big {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--c-accent-2) 14%, transparent),
+    color-mix(in srgb, var(--c-accent) 10%, transparent),
+    color-mix(in srgb, var(--c-accent-3) 12%, transparent));
+  position: relative;
+  overflow: hidden;
+  min-height: 480px;
+}
+.card-chizuk-big .card-head {
+  margin-bottom: var(--s-4);
+}
+.card-chizuk-big .card-title {
+  font-size: var(--t-2xl);
+  line-height: 1.2;
+}
+.chizuk-scroll-wrap {
+  position: relative;
+  height: 480px;
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.chizuk-scroll {
+  position: relative;
+  padding: var(--s-5) var(--s-6);
+  animation: chizuk-rise 50s linear infinite;
+}
+.chizuk-scroll-wrap:hover .chizuk-scroll {
+  animation-play-state: paused;
+}
+/* Text starts BELOW the wrap (translateY 100% of its own height), rises to ABOVE */
+@keyframes chizuk-rise {
+  0%   { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+.card-chizuk-big .breslov-title {
+  font-family: var(--f-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 var(--s-4);
+  text-align: center;
+  background: linear-gradient(135deg, var(--c-accent-2), var(--c-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.card-chizuk-big .breslov-quote {
+  font-family: var(--f-sans);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 500;
+  font-style: normal !important; /* not italic per user request */
+  line-height: 1.85;
+  color: var(--c-text);
+  text-align: justify;
+  padding: 0;
+  margin: 0 0 var(--s-4);
+}
+.card-chizuk-big .breslov-quote::before { display: none; }
+.card-chizuk-big .breslov-src {
+  font-size: var(--t-md);
+  text-align: end;
+  display: block;
+  margin-bottom: var(--s-5);
+}
+.card-chizuk-big .breslov-foot {
+  margin-top: var(--s-5);
+  border-top: 1px dashed color-mix(in srgb, var(--c-accent) 30%, transparent);
+  padding-top: var(--s-4);
+}
+.card-chizuk-big .breslov-tagline {
+  font-size: var(--t-lg);
+}
+.breslov-body::-webkit-scrollbar { width: 6px; }
+.breslov-body::-webkit-scrollbar-thumb {
+  background: var(--c-accent-2);
+  border-radius: 999px;
+  opacity: 0.6;
+}
+
+.breslov-title {
+  font-family: var(--f-display);
+  font-size: var(--t-lg);
+  font-weight: 800;
+  line-height: 1.3;
+  background: linear-gradient(135deg, var(--c-accent-2), var(--c-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 var(--s-3);
+  padding: 0;
+  text-align: start;
+}
+.breslov-quote {
+  font-family: var(--f-sans);
+  font-size: var(--t-lg);
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--c-text);
+  font-style: italic;
+  padding: var(--s-3) 0 var(--s-2);
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.breslov-quote::before {
+  content: '"';
+  position: absolute;
+  inset-inline-start: -0.5rem;
+  top: -1.2rem;
+  font-family: Georgia, serif;
+  font-size: 4.5rem;
+  color: var(--c-accent-2);
+  opacity: 0.4;
+  line-height: 1;
+  font-style: normal;
+  text-shadow: 0 0 20px var(--c-accent-glow);
+}
+.breslov-src {
+  font-family: var(--f-mono);
+  font-size: var(--t-sm);
+  color: var(--c-accent-2);
+  margin-top: var(--s-3);
+  letter-spacing: 0.06em;
+  text-align: end;
+  font-weight: 600;
+}
+.breslov-foot {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px dashed color-mix(in srgb, var(--c-accent-2) 30%, transparent);
+  text-align: center;
+}
+.breslov-tagline {
+  font-family: var(--f-display);
+  font-size: var(--t-sm);
+  color: var(--c-accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 12px var(--c-accent-glow);
+  animation: tagline-shimmer 4s ease-in-out infinite;
+}
+@keyframes tagline-shimmer {
+  0%, 100% { opacity: 0.8; }
+  50%      { opacity: 1; }
+}
+.quote-src {
+  display: block;
+  font-family: var(--f-mono);
+  font-size: var(--t-xs);
+  color: var(--c-accent-2);
+  margin-top: var(--s-3);
+  letter-spacing: 0.04em;
+  text-align: end;
+}
+.quote-short + .quote-src { text-align: center; }

@@ -1,0 +1,133 @@
+/* יומיומי · Cards driven by hidabroot.org */
+
+.card-hidabroot .card-body {
+  padding: 0;
+}
+
+/* ===== Daf Yomi (featured) ===== */
+.card-daf-yomi {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--c-accent) 12%, transparent),
+    color-mix(in srgb, var(--c-accent-3) 12%, transparent));
+}
+.dy-wrap {
+  position: relative;
+  z-index: 1;
+}
+.dy-link {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--s-4);
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.dy-link:hover { transform: translateY(-2px); }
+.dy-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--r-md);
+  position: relative;
+}
+.dy-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(0,0,0,0.4));
+  border-radius: inherit;
+}
+.dy-info { padding: var(--s-2) 0; }
+.dy-title {
+  font-family: var(--f-display);
+  font-size: var(--t-xl);
+  font-weight: 800;
+  color: var(--c-text);
+  line-height: 1.3;
+  margin: 0 0 var(--s-3);
+}
+.dy-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-4);
+  background: var(--c-accent);
+  color: var(--c-bg-0);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: var(--t-sm);
+  transition: all var(--t-fast);
+  box-shadow: 0 6px 20px var(--c-accent-glow);
+}
+.dy-link:hover .dy-cta {
+  background: var(--c-accent-2);
+  box-shadow: 0 10px 30px var(--c-accent-glow);
+}
+.dy-play {
+  font-size: 1.1em;
+  display: inline-block;
+}
+@media (max-width: 680px) {
+  .dy-link { grid-template-columns: 1fr; }
+  .dy-thumb { aspect-ratio: 16/9; }
+}
+
+/* ===== Article grid (Health / Family / History) ===== */
+.hb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s-3);
+  padding: 0;
+}
+.hb-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--c-border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--t-fast) var(--ease-out);
+}
+.hb-card:hover {
+  border-color: var(--c-accent);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -10px var(--c-accent-glow);
+}
+.hb-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--c-bg-1);
+  position: relative;
+}
+.hb-thumb.hb-thumb-empty {
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  opacity: 0.5;
+}
+.hb-info {
+  padding: var(--s-3);
+  flex: 1;
+}
+.hb-title {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--c-text);
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 680px) {
+  .hb-grid { grid-template-columns: repeat(2, 1fr); gap: var(--s-2); }
+  .hb-title { font-size: var(--t-xs); }
+}

@@ -1,0 +1,205 @@
+/* =============================================================
+   יומיומי · MOSAIC LAYOUT — break the "stacked rectangles" feel
+   - asymmetric grid with explicit areas
+   - 12-column responsive base
+   - cards rotate gently into place, with different visual shapes
+   - "FEATURED" highlight cards
+   ============================================================= */
+
+.page {
+  max-width: 1440px;
+  padding: clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2rem) 4rem;
+}
+
+/* ----- master 12-column grid ----- */
+.mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  margin-top: 1.5rem;
+}
+/* card sizes within mosaic */
+.mosaic > .card,
+.mosaic > article {
+  grid-column: span 12; /* default full */
+}
+@media (min-width: 760px) {
+  .mosaic .span-6  { grid-column: span 6; }
+  .mosaic .span-7  { grid-column: span 7; }
+  .mosaic .span-5  { grid-column: span 5; }
+  .mosaic .span-8  { grid-column: span 8; }
+  .mosaic .span-4  { grid-column: span 4; }
+  .mosaic .span-9  { grid-column: span 9; }
+  .mosaic .span-3  { grid-column: span 3; }
+  .mosaic .span-12 { grid-column: span 12; }
+}
+
+/* ----- different card "shapes" — break the rounded-rect pattern ----- */
+.card-shape-hex {
+  border-radius: 8px;
+  clip-path: polygon(
+    24px 0, calc(100% - 24px) 0,
+    100% 24px, 100% calc(100% - 24px),
+    calc(100% - 24px) 100%, 24px 100%,
+    0 calc(100% - 24px), 0 24px);
+}
+.card-shape-asym {
+  border-radius: 40px 8px 40px 8px;
+}
+.card-shape-portal {
+  border-radius: 200px 200px 22px 22px;
+  padding-top: clamp(2.5rem, 5vw, 4rem) !important;
+}
+.card-shape-ribbon::before {
+  background:
+    repeating-linear-gradient(45deg,
+      transparent 0, transparent 8px,
+      color-mix(in srgb, var(--gold) 30%, transparent) 8px,
+      color-mix(in srgb, var(--gold) 30%, transparent) 9px) !important;
+  opacity: 0.4 !important;
+}
+
+/* ----- gentle entry rotation ----- */
+.mosaic > .card:nth-child(3n)     { animation-delay: 80ms; }
+.mosaic > .card:nth-child(3n + 1) { animation-delay: 140ms; }
+.mosaic > .card:nth-child(3n + 2) { animation-delay: 200ms; }
+
+/* ----- highlight (FEATURED) cards — extra glow + bigger title ----- */
+.card-featured-x {
+  position: relative;
+  background:
+    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(212,168,67,0.15), transparent 60%),
+    rgba(20, 16, 12, 0.7);
+  border: 1px solid rgba(212, 168, 67, 0.28);
+}
+.card-featured-x::before {
+  background: conic-gradient(
+    from var(--ang, 0deg),
+    var(--gold) 0%,
+    transparent 25%,
+    var(--rgb-b) 50%,
+    transparent 75%,
+    var(--gold) 100%) !important;
+  opacity: 0.6 !important;
+  animation: card-rim 6s linear infinite !important;
+}
+.card-featured-x .card-title {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+/* ----- DIAGONAL section divider strips (between zones of cards) ----- */
+.mosaic-divider {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  margin: 1rem 0 0;
+  pointer-events: none;
+}
+.mosaic-divider::before {
+  content: "";
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+.mosaic-divider span {
+  position: relative;
+  padding: 0.4rem 1.4rem;
+  background: rgba(10, 10, 12, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--r-pill);
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 0 12px var(--gold-glow);
+}
+
+/* ----- movement / hover personalities per zone ----- */
+.card-hover-tilt-strong:hover {
+  transform: rotate(-1.5deg) translateY(-6px) !important;
+}
+.card-hover-zoom:hover { transform: scale(1.025) translateY(-3px) !important; }
+.card-hover-lift-big:hover { transform: translateY(-10px) scale(1.01) !important; box-shadow: 0 40px 80px -20px rgba(0,0,0,0.7), 0 0 60px -10px var(--gold-glow) !important; }
+
+/* ----- decorative orbiting ring on featured cards ----- */
+.card-orbit::after {
+  content: "";
+  position: absolute;
+  width: 140%; height: 140%;
+  top: -20%; left: -20%;
+  border-radius: 50%;
+  border: 1px dashed rgba(212, 168, 67, 0.2);
+  animation: orbit-spin 40s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes orbit-spin { to { transform: rotate(360deg); } }
+
+/* ----- side-by-side "duo" cards that share a frame ----- */
+.duo-frame {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  position: relative;
+}
+@media (max-width: 760px) {
+  .duo-frame { grid-template-columns: 1fr; }
+}
+
+/* ----- triple row (3 small stat-like cards) ----- */
+.triplet {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+@media (max-width: 760px) {
+  .triplet { grid-template-columns: 1fr; }
+}
+
+/* ----- floating gentle bob on certain cards ----- */
+.card-bob {
+  animation: card-bob 10s ease-in-out infinite, fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) backwards !important;
+}
+@keyframes card-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* ----- circle/orb decorations ----- */
+.deco-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  z-index: 0;
+}
+.deco-orb.gold { background: var(--gold-glow); }
+.deco-orb.violet { background: rgba(108, 99, 255, 0.3); }
+.deco-orb.tl { width: 200px; height: 200px; top: -60px; right: -60px; }
+.deco-orb.br { width: 240px; height: 240px; bottom: -80px; left: -80px; }
+
+/* ----- subtle "neon stripe" on featured cards ----- */
+.card-stripe::before {
+  background: linear-gradient(90deg,
+    var(--gold) 0%,
+    var(--rgb-p) 25%,
+    var(--rgb-b) 50%,
+    var(--rgb-c) 75%,
+    var(--gold) 100%) !important;
+  background-size: 200% 100% !important;
+  opacity: 0.55 !important;
+  animation: stripe-flow 8s linear infinite !important;
+}
+@keyframes stripe-flow {
+  to { background-position: 200% 50%; }
+}
