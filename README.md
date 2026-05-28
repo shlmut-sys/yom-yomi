@@ -1,168 +1,101 @@
 # 🕯️ יומיומי · Yom-Yomi
 
 > **היום היהודי שלך, יום אחר יום.**
-> אתר יהודי מתעדכן אוטומטית — תאריך עברי, זמני תפילה, יומא דהילולא, חיזוקים, חדשות תורניות, וכל מה שאתה צריך ליום-יום.
 
-**Domain**: [yom-yomi.com](https://yom-yomi.com)
-**Owner**: איתמר טיפליצקי · מעבדות שלימות · בית שמש
+אתר יהודי מתעדכן אוטומטית — תאריך עברי, זמני תפילה, יומא דהילולא, חיזוק יומי מרבי נחמן, הלכה, פתגם, ועוד.
 
 ---
 
-## ✨ מה יש בו
+## 🎨 הרידיזיין החדש (Black + Gold)
 
-### תוכן יומי שמתחדש לבד
-- 📜 **פרשת השבוע** + תאריך עברי + שעה + מזג אוויר מורחב
-- ⏱️ **זמני היום** מלאים (עתים לבינה style) — כולל חצות לפי שיטת ברסלב/זוהר
-- 📖 **לימוד יומי** — דף יומי, משנה, ירושלמי, רמב"ם, חפץ חיים, נ"ך
-- ⏳ **בעיתה אחישנה** — ספירה לאחור חיה לאלף השישי
-- 🌗 **תקופות + ליקויי לבנה וחמה**
-- 🕯️ **יומא דהילולא** — 87 צדיקים לסיוון + היום בלוח השנה ממכלול
-- ✨ **חיזוק יומי** — 403 חיזוקים מתורת ברסלב, גולל אוטומטית
-- 📜 **מתורת ברסלב** מאתר iBreslev
-- ⚖️ **3 הלכות יומיות** מורחבות
-- 💎 **פתגם היום** מחכמי הספרדים (22 פתגמים)
-- 📚 **ערכים בפרשת השבוע** ממכלול
+האתר עבר רידיזיין מלא בסגנון **Studio Shlemut AI** — שחור עמוק, זהב חמים, מבטאי RGB ניאון.
 
-### תוכן עולמי שנשלף אוטומטית
-- 📺 **הדף היומי** — וידאו מהידברות
-- 🌍 **קרוסלת מקומות לטייל** — תמונות מויקיפדיה + Google Maps
-- 📚 **ספריית ברסלב** — 12 קטגוריות מ-breslevbooks.co.il
-- 📷 **תמונת היום** + 💡 **הידעת?** ממכלול
-- ⭐ **ערך מומלץ** ממכלול
-- ✨ **ערכים חדשים** ממכלול
-- 🌿 **בריאות** + 👨‍👩‍👧 **משפחה** + 🏺 **היסטוריה** מהידברות
-- 🎵 **חדשות מוזיקה** מ-JDN + הַמְּנַגֵּן
+### 4 אווירות מתחלפות
 
-### חוויית משתמש
-- 🌓 **רקע לבן/כהה** עם טוגלר
-- 🌐 **עברית / English** עם כפתור
-- 📍 **זיהוי מיקום אוטומטי** (IP) + GPS מדויק
-- 🎨 **23 פלטות צבעים** — כל כרטיס בצבע ייחודי
-- ♿ **רספונסיבי מלא** (מובייל / טאבלט / דסקטופ)
-- 🚀 **PWA** — ניתן להתקנה כאפליקציה
-- 🔒 **פילטר תוכן** אוטומטי (סינון תוכן פוליטי/מדיני)
+האתר מציג **רקע שמתחלף אוטומטית כל 5 דקות** בין 4 אווירות:
 
----
-
-## 🤖 אוטומציה — אפס תחזוקה ידנית
-
-האתר מתעדכן **לבד** בכל יום:
-
-| מקור | תדירות | טריגר |
+| | אווירה | אופי |
 |---|---|---|
-| מכלול (8 סקציות) | כל 6 שעות | + ניקוי בצאת הכוכבים |
-| הידברות (4 קטגוריות) | כל 6 שעות | + ניקוי בצאת הכוכבים |
-| מוזיקה (JDN + הַמְּנַגֵּן) | כל 6 שעות | + ניקוי בצאת הכוכבים |
-| iBreslev RSS | כל 6 שעות | + ניקוי בצאת הכוכבים |
-| ספרי ברסלב | כל 12 שעות | + ניקוי בצאת הכוכבים |
-| מזג אוויר (Open-Meteo) | כל 30 דקות | זמן אמת |
-| חיזוק יומי / פתגם / צדיקים | יומית | dayOfYear rotation |
-| זמני יום | זמן אמת | kosher-zmanim |
+| 🌌 | **לילה** (`night`) | שחור עמוק + ספירות זהב/סגול + כוכבים |
+| 🕯️ | **נרות** (`candles`) | שחור חמים + להבות אמבר מהבהבות |
+| 🌠 | **זוהר צפוני** (`aurora`) | וילונות ירוק/תכלת/סגול נעים |
+| 🌅 | **שחר** (`dawn`) | סגול עמוק → זריחה זהובה |
 
-**ברגע שמכלול / הידברות / RSS מעדכנים — האתר מעדכן את עצמו אוטומטית בצאת הכוכבים.**
+- **לכבות התחלפות אוטומטית:** כפתור `AUTO` בכותרת.
+- **לבחור אווירה ידנית:** ארבע נקודות צבעוניות בכותרת.
+- ההעדפות נשמרות ב-`localStorage`.
+
+### תכונות "חיות" נוספות
+- לוגו זהב עם float-אנימציה מדורגת על כל אות
+- Cursor מותאם בצבעי RGB (חתימת Studio Shlemut)
+- Film grain + scan-line דק
+- כרטיסי זכוכית עם מסגרת גרדיאנט שמתחזקת ב-hover
+- ספירה לאחור (האלף השישי) זוהרת בזהב
 
 ---
 
-## 🛠 ארכיטקטורה
-
-**Pure static site** — אין שרת backend.
+## 📁 מבנה
 
 ```
-yom-yomi/
-├── index.html                  # נקודת כניסה יחידה
-├── manifest.json               # PWA
-├── sw.js                       # Service Worker
+site/
+├── index.html                     # נקודת כניסה
+├── manifest.json                  # PWA
 ├── favicon.svg
-│
+├── sw.js                          # service worker
 ├── assets/
 │   ├── css/
-│   │   ├── main.css            # מייבא הכל
-│   │   ├── tokens.css          # design tokens
-│   │   ├── theme/              # 7 ערכות לימי השבוע + שבת + חג
-│   │   ├── layout/             # header, hero, grid, footer
-│   │   └── components/         # 24 קומפוננטות נפרדות
+│   │   ├── main.css               # CSS מקורי (לא נגענו)
+│   │   ├── redesign.css           # ★ שכבת הרידיזיין
+│   │   ├── redesign-moods.css     # ★ 4 התמות המתחלפות
+│   │   ├── tokens.css, reset.css, fonts.css
+│   │   ├── layout/, components/, theme/
 │   ├── js/
-│   │   ├── app.js              # תזמורת
-│   │   ├── core/               # state, i18n, utils, events
-│   │   ├── data/               # loader, cache, content-filter
-│   │   ├── time/               # hebrew-date, zmanim
-│   │   ├── location/           # ip-locate, gps, cities
-│   │   ├── modules/            # 24 מודולי כרטיסים עצמאיים
-│   │   └── ui/                 # theme, modal, toast, city-picker
-│   └── fonts/                  # Assistant (Heebo backup)
-│
-└── data/
-    ├── tzadikim/sivan.json     # 87 צדיקים לסיוון (יורחב)
-    ├── breslov/likutei.json    # 403 חיזוקים מקובץ Word
-    ├── pitgamim/sephardi.json  # 22 פתגמי חכמי הספרדים
-    ├── halacha/daily.json      # 36 הלכות (12 קבוצות של 3)
-    └── travel/destinations.json # יעדי טיול
+│   │   ├── app.js                 # main entry (ES module)
+│   │   ├── ui/mood-rotator.js     # ★ rotator + cursor + UI
+│   │   ├── core/, data/, modules/, time/, location/, ui/
+│   └── fonts/                     # Assistant family
+└── data/                          # JSON locals (ברסלב, הלכה, פתגמים, צדיקים)
 ```
 
-**100% ES Modules · אין build step · עובד מקבצים סטטיים בלבד.**
+★ = נוספו ברידיזיין
 
 ---
 
-## 🌐 Stack חיצוני (כל חינמי)
+## 🚀 העלאה ל-GitHub Pages
 
-| שירות | תפקיד |
-|---|---|
-| **Cloudflare Pages** | אחסון + CDN עולמי |
-| **Cloudflare DNS** | yom-yomi.com |
-| [kosher-zmanim](https://github.com/BehindTheMath/KosherZmanim) | זמני תפילה הלכתיים |
-| [@hebcal/core](https://github.com/hebcal/hebcal-es6) | תאריך עברי + פרשה |
-| [@hebcal/learning](https://github.com/hebcal/hebcal-learning) | לימוד יומי |
-| [Open-Meteo](https://open-meteo.com/) | מזג אוויר (חינמי, ללא API key) |
-| [ipapi.co](https://ipapi.co/) | זיהוי מיקום מ-IP |
-| [api.allorigins.win](https://allorigins.win/) | CORS proxy ל-RSS |
-| [hamichlol.org.il](https://hamichlol.org.il) | תוכן יהודי מתחדש (8 סקציות) |
-| [hidabroot.org](https://hidabroot.org) | דף יומי, בריאות, משפחה |
-| [Wikipedia REST API](https://en.wikipedia.org/api/rest_v1/) | תמונות + תוכן יעדי טיול |
+1. דחוף את כל תיקיית `site/` ל-repo (או את כל התוכן שלה ל-root).
+2. ב-Settings → Pages: בחר branch + folder (`/` או `/site` בהתאם).
+3. האתר עולה.
+
+**הערה חשובה:** התצוגה המקדימה כאן עלולה להציג "טוען..." בכרטיסים שמושכים API חיצוני (Hebcal, Hidabroot, ipapi וכו') בגלל מגבלות iframe — **בגיט הב פייג'ס זה יעבוד בצורה תקינה**.
 
 ---
 
-## 🚀 פיתוח מקומי
+## 🛠️ ערכים שכדאי להכיר
 
-```bash
-# Clone
-git clone https://github.com/shlemoot/yom-yomi.git
-cd yom-yomi
-
-# Run any static server (PWA needs http://, not file://)
-python -m http.server 8765
-# Then visit: http://localhost:8765
+### החלפת ברירת המחדל בין כהה/בהיר
+ב-`assets/js/app.js` שורה ~161:
+```js
+applyTone(savedTone === 'light' ? 'light' : 'dark');  // ברירת מחדל: dark
 ```
 
----
+### שינוי תזמון התחלפות האווירה
+ב-`assets/js/ui/mood-rotator.js`:
+```js
+const ROTATE_MS = 5 * 60 * 1000; // 5 דקות → שנה לערך אחר
+```
 
-## 📦 פריסה (Deployment)
-
-האתר פרוס אוטומטית ב-**Cloudflare Pages** מחובר ל-repository הזה.
-
-**כל push ל-`main` → deploy אוטומטי תוך 30 שניות.**
-
-הגדרות build:
-- Framework: None
-- Build command: (ריק)
-- Output directory: `/`
+### הוספת אווירה חדשה
+1. ב-`redesign-moods.css` הוסף בלוק `body[data-mood="newName"] { ... }`
+2. ב-`mood-rotator.js` הוסף ל-`MOODS` ו-`LABELS`
+3. ב-`redesign.css` הוסף `.mood-dot[data-mood="newName"]` עם צבע
 
 ---
 
-## 🔮 רעיונות עתידיים
+## 👤 קרדיט
 
-- [ ] להוסיף 11 חודשי צדיקים שחסרים
-- [ ] חיפוש סמנטי (Claude API)
-- [ ] Push notifications (OneSignal)
-- [ ] Streak system (כמו Duolingo)
-- [ ] Daily Card לשיתוף בוואטסאפ
-- [ ] חשבון אישי + לוח הילולא משפחתי
-- [ ] תרומות לעילוי נשמה (PayBox/Bit)
-- [ ] AI Chat "שאל את הרב"
-- [ ] אפליקציית מובייל (Capacitor)
+- **תוכן ולוגיקה:** איתמר טיפליצקי · מעבדות שלימות
+- **ספרי קוד עזר:** kosher-zmanim, @hebcal/core, @hebcal/learning
+- **רידיזיין:** Studio Shlemut AI Design System (black + gold + RGB)
 
----
-
-## 📝 רישיון
-
-**© כל הזכויות שמורות למעבדות שלימות · בית שמש · ישראל**
-© All rights reserved to Studio Shlemut Labs · Bet Shemesh · Israel
+© כל הזכויות שמורות למעבדות שלימות · בית שמש · ישראל

@@ -1,0 +1,23 @@
+name = "yomyomi-list"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+# ── Database (created with: wrangler d1 create yomyomi-list) ──
+[[d1_databases]]
+binding = "DB"
+database_name = "yomyomi-list"
+database_id = "PASTE_YOUR_DATABASE_ID_HERE"
+
+# ── Daily send: 05:00 UTC = 07:00 Israel (winter). Use "0 4 * * *" for summer DST. ──
+[triggers]
+crons = ["0 5 * * *"]
+
+[vars]
+SITE_URL = "https://YOURUSER.github.io/yom-yomi/"
+SENDER_EMAIL = "noreply@yomyomi.co.il"
+SENDER_NAME = "יומיומי"
+# SEND_NOW_KEY is the password for the manual /send-now endpoint — change it!
+SEND_NOW_KEY = "change-me-please"
+
+# ── Secret (set with: wrangler secret put BREVO_API_KEY) ──
+# BREVO_API_KEY = (do NOT put it here — it's a secret)
